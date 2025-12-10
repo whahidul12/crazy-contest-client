@@ -7,6 +7,7 @@ import Register from "../pages/Auth/Register";
 import AllContests from "../pages/AllContests/AllContests";
 import ContestDetails from "../pages/ContestDetails/ContestDetails";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../Layout/DashboardLayout";
 // import DashboardLayout from "../layout/DashboardLayout";
 // Import dashboard components (to be created in Part 3)
 // import Leaderboard from "../pages/Leaderboard/Leaderboard";
@@ -59,22 +60,22 @@ export const Router = createBrowserRouter([
       // }
     ],
   },
-  // {
-  //   path: "dashboard",
-  //   element: (
-  //     <PrivateRoute>
-  //       <DashboardLayout />
-  //     </PrivateRoute>
-  //   ),
-  //   // Children will be added in Part 3
-  //   children: [
-  //     // Normal User Routes (Example)
-  //     // { path: 'my-profile', element: <MyProfile /> },
-  //     // { path: 'participated-contests', element: <MyParticipatedContests /> },
-  //     // Creator Routes (Example)
-  //     // { path: 'add-contest', element: <AddContest /> },
-  //     // Admin Routes (Example)
-  //     // { path: 'manage-users', element: <ManageUsers /> },
-  //   ],
-  // },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    // Children will be added in Part 3
+    children: [
+      // Normal User Routes (Example)
+      // { path: 'my-profile', element: <MyProfile /> },
+      // { path: 'participated-contests', element: <MyParticipatedContests /> },
+      // Creator Routes (Example)
+      // { path: 'add-contest', element: <AddContest /> },
+      // Admin Routes (Example)
+      // { path: 'manage-users', element: <ManageUsers /> },
+    ],
+  },
 ]);
