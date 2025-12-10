@@ -1,89 +1,41 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
-  FaHome,
-  FaUser,
-  FaTrophy,
-  FaList,
-  FaUsers,
   FaAd,
-  FaPlusCircle,
-  FaGavel,
+  FaBook,
+  FaCalendar,
+  FaHome,
+  FaList,
+  FaSearch,
+  FaTrophy,
+  FaUser,
+  FaUsers,
+  FaWallet,
 } from "react-icons/fa";
 import useRole from "../hooks/useRole";
 import { Helmet } from "react-helmet-async";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../Hooks/useAuth";
 
 const DashboardLayout = () => {
-  const [role] = useRole(); // Custom hook from Part 2
-  const { user } = useAuth();
+  const [role] = useRole();
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
 
-  // Navigation items based on roles
-  const userLinks = (
-    <>
-      <li>
-        <NavLink to="/dashboard/my-profile">
-          <FaUser /> My Profile
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/my-participated-contests">
-          <FaList /> Participated Contests
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/my-winning-contests">
-          <FaTrophy /> Winning Contests
-        </NavLink>
-      </li>
-    </>
-  );
-
-  const creatorLinks = (
-    <>
-      <li>
-        <NavLink to="/dashboard/add-contest">
-          <FaPlusCircle /> Add Contest
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/my-created-contests">
-          <FaList /> My Created Contests
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/contest-submitted">
-          <FaUsers /> Submitted Tasks
-        </NavLink>
-      </li>
-    </>
-  );
-
-  const adminLinks = (
-    <>
-      <li>
-        <NavLink to="/dashboard/manage-users">
-          <FaUsers /> Manage Users
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/manage-contests">
-          <FaGavel /> Manage Contests
-        </NavLink>
-      </li>
-    </>
-  );
+  const handleLogOut = () => {
+    logOut();
+    navigate("/");
+  };
 
   return (
     <div className="drawer lg:drawer-open">
       <Helmet>
         <title>ContestHub | Dashboard</title>
       </Helmet>
-      <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col p-8">
-        {/* Mobile Hamburger */}
+        {/* Page content here */}
         <label
-          htmlFor="dashboard-drawer"
-          className="btn btn-primary drawer-button mb-4 w-fit lg:hidden"
+          htmlFor="my-drawer-2"
+          className="btn btn-primary drawer-button mb-4 lg:hidden"
         >
           Open Menu
         </label>
@@ -91,37 +43,104 @@ const DashboardLayout = () => {
       </div>
       <div className="drawer-side">
         <label
-          htmlFor="dashboard-drawer"
+          htmlFor="my-drawer-2"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 gap-2 p-4">
-          {/* User Info Header */}
-          <div className="mb-6 flex flex-col items-center">
-            <img
-              src={user?.photoURL}
-              alt=""
-              className="mb-2 h-20 w-20 rounded-full object-cover"
-            />
-            <span className="text-lg font-bold">{user?.displayName}</span>
-            <span className="badge badge-primary badge-outline mt-1">
-              {role}
-            </span>
+        <ul className="menu bg-base-200 text-base-content flex min-h-full w-80 flex-col justify-between p-4">
+          {/* Sidebar content */}
+          <div>
+            <div className="mb-6 px-4">
+              <h2 className="text-primary text-2xl font-bold">ContestHub</h2>
+              <p className="text-sm tracking-widest uppercase opacity-70">
+                {role}
+              </p>
+            </div>
+
+            {/* Admin Menu */}
+            {role === "Admin" && (
+              <>
+                <li>
+                  <NavLink to="/dashboard/manage-users">
+                    <FaUsers /> Manage Users
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manage-contests">
+                    <FaList /> Manage Contests
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* Creator Menu */}
+            {role === "Contest Creator" && (
+              <>
+                <li>
+                  <NavLink to="/dashboard/add-contest">
+                    <FaAd /> Add New Contest
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/my-created-contests">
+                    <FaList /> My Created Contests
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/submitted-tasks">
+                    <FaBook /> Submitted Tasks
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* User Menu (Always visible for Normal User, optional logic if roles are exclusive) */}
+            {role === "Normal User" && (
+              <>
+                <li>
+                  <NavLink to="/dashboard/my-profile">
+                    <FaUser /> My Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/my-participated-contests">
+                    <FaWallet /> My Participated Contests
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/my-winning-contests">
+                    <FaTrophy /> My Winning Contests
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            <div className="divider"></div>
+
+            {/* Shared Links */}
+            <li>
+              <NavLink to="/">
+                <FaHome /> Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/all-contests">
+                <FaSearch /> All Contests
+              </NavLink>
+            </li>
           </div>
 
-          {/* Role Specific Links */}
-          {role === "Admin" && adminLinks}
-          {role === "Contest Creator" && creatorLinks}
-          {role === "Normal User" && userLinks}
-
-          <div className="divider"></div>
-
-          {/* Shared Links */}
-          <li>
-            <NavLink to="/">
-              <FaHome /> Home
-            </NavLink>
-          </li>
+          {/* Logout Button at Bottom */}
+          <div className="mb-4">
+            <li>
+              <button
+                onClick={handleLogOut}
+                className="bg-red-500 text-white hover:bg-red-600"
+              >
+                Logout
+              </button>
+            </li>
+          </div>
         </ul>
       </div>
     </div>

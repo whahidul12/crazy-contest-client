@@ -7,11 +7,10 @@ import Countdown from "react-countdown";
 import { FaTrophy, FaUsers, FaDollarSign, FaFileAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useState } from "react";
-// import useAuth from "../../hooks/useAuth";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import SubmissionModal from "./SubmissionModal";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 
 const ContestDetails = () => {
   const { id } = useParams();

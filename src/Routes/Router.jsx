@@ -8,7 +8,6 @@ import AllContests from "../pages/AllContests/AllContests";
 import ContestDetails from "../pages/ContestDetails/ContestDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
-// import DashboardLayout from "../layout/DashboardLayout";
 // Import dashboard components (to be created in Part 3)
 // import Leaderboard from "../pages/Leaderboard/Leaderboard";
 // import HelpCenter from "../pages/HelpCenter/HelpCenter";
@@ -61,7 +60,7 @@ export const Router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <DashboardLayout />
