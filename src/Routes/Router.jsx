@@ -8,9 +8,9 @@ import AllContests from "../pages/AllContests/AllContests";
 import ContestDetails from "../pages/ContestDetails/ContestDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
-// Import dashboard components (to be created in Part 3)
-// import Leaderboard from "../pages/Leaderboard/Leaderboard";
-// import HelpCenter from "../pages/HelpCenter/HelpCenter";
+import Leaderboard from "../Pages/Leaderboard/Leaderboard";
+import HelpCenter from "../Pages/HelpCenter/HelpCenter";
+import Payment from "../Pages/Payment/Payment";
 
 // ... (Import all dashboard components here: MyProfile, MyParticipatedContests, AddContest, etc.) ...
 
@@ -36,14 +36,14 @@ export const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: "/leaderboard",
-      //   element: <Leaderboard />, // Dynamic leaderboard (Challenge Task)
-      // },
-      // {
-      //   path: "/help-center",
-      //   element: <HelpCenter />, // Extra meaningful route
-      // },
+      {
+        path: "/leaderboard",
+        element: <Leaderboard />,
+      },
+      {
+        path: "/help-center",
+        element: <HelpCenter />,
+      },
       {
         path: "/login",
         element: <Login />,
@@ -52,11 +52,14 @@ export const Router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      // Payment route will be nested here
-      // {
-      //     path: "/payment/:id",
-      //     element: <PrivateRoute><Payment /></PrivateRoute>
-      // }
+      {
+        path: "/payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
@@ -66,15 +69,24 @@ export const Router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    // Children will be added in Part 3
-    children: [
-      // Normal User Routes (Example)
-      // { path: 'my-profile', element: <MyProfile /> },
-      // { path: 'participated-contests', element: <MyParticipatedContests /> },
-      // Creator Routes (Example)
-      // { path: 'add-contest', element: <AddContest /> },
-      // Admin Routes (Example)
-      // { path: 'manage-users', element: <ManageUsers /> },
-    ],
+    // children: [
+    //   // Normal User Routes
+    //   { path: "my-profile", element: <MyProfile /> },
+    //   { path: "my-participated-contests", element: <MyParticipatedContest /> },
+    //   { path: "my-winning-contests", element: <MyWinningContests /> },
+
+    //   // Creator Routes
+    //   { path: "add-contest", element: <AddContest /> },
+    //   { path: "my-created-contests", element: <MyCreatedContests /> },
+    //   { path: "submitted-tasks", element: <SubmittedTasks /> },
+    //   { path: "edit-contest/:id", element: <EditContest /> },
+
+    //   // Admin Routes
+    //   { path: "manage-users", element: <ManageUsers /> },
+    //   { path: "manage-contests", element: <ManageContests /> },
+
+    //   // Default Dashboard Home (redirect based on role in DashboardLayout or use this)
+    //   // { path: '', element: <DashboardHomeComponent /> }
+    // ],
   },
 ]);

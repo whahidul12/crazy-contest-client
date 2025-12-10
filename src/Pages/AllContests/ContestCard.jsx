@@ -16,7 +16,7 @@ const ContestCard = ({ contest }) => {
       navigate("/login");
     } else {
       // Logged in, navigate to details page
-      navigate(`/contest/${_id}`);
+      navigate(`/contests/${_id}`);
     }
   };
 

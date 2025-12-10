@@ -39,7 +39,7 @@ const DashboardLayout = () => {
         >
           Open Menu
         </label>
-        <Outlet />
+        {/* <Outlet /> */}
       </div>
       <div className="drawer-side">
         <label

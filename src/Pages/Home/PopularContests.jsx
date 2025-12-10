@@ -28,7 +28,7 @@ const PopularContests = () => {
     <div className="my-16 px-4">
       <h2 className="mb-10 text-center text-4xl font-bold">Popular Contests</h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {contests.slice(0, 5).map((contest) => (
+        {contests.map((contest) => (
           <motion.div
             whileHover={{ scale: 1.02 }}
             key={contest._id}
@@ -48,7 +48,7 @@ const PopularContests = () => {
                 Participants: {contest.participantsCount}
               </p>
               <div className="card-actions justify-end">
-                <Link to={`/contest/${contest._id}`}>
+                <Link to={`/contests/${contest._id}`}>
                   <button className="btn btn-primary btn-sm">Details</button>
                 </Link>
               </div>
