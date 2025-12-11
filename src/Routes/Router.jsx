@@ -20,6 +20,7 @@ import SubmittedTasks from "../Pages/Dashboard/Creator/SubmittedTasks";
 import EditContest from "../Pages/Dashboard/Creator/EditContest";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageContests from "../Pages/Dashboard/Admin/ManageContests";
+import AdminRoute from "./AdminRoute";
 
 // ... (Import all dashboard components here: MyProfile, MyParticipatedContests, AddContest, etc.) ...
 
@@ -91,8 +92,22 @@ export const Router = createBrowserRouter([
       { path: "edit-contest/:id", element: <EditContest /> },
 
       // Admin Routes
-      { path: "manage-users", element: <ManageUsers /> },
-      { path: "manage-contests", element: <ManageContests /> },
+      {
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-contests",
+        element: (
+          <AdminRoute>
+            <ManageContests />
+          </AdminRoute>
+        ),
+      },
 
       // Default Dashboard Home (redirect based on role in DashboardLayout or use this)
       // { path: '', element: <DashboardHomeComponent /> }

@@ -20,7 +20,6 @@ const useRole = () => {
       return res.data.role;
     },
   });
-
   return [role, isRoleLoading, refetch];
 };
 
