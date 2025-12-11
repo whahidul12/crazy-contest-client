@@ -1,7 +1,14 @@
 import axios from "axios";
 
+const productionUrl = "https://crazy-contest-server.vercel.app";
+const developmentUrl = "http://localhost:3000";
+
+const baseURL =
+  window.location.hostname === "localhost" ? developmentUrl : productionUrl;
+
 const axiosPublic = axios.create({
-  baseURL: "http://localhost:3000", // Your server URL
+  baseURL: baseURL,
+  withCredentials: false,
 });
 
 const useAxiosPublic = () => {

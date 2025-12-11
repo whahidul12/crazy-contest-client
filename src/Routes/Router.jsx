@@ -11,6 +11,15 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Leaderboard from "../Pages/Leaderboard/Leaderboard";
 import HelpCenter from "../Pages/HelpCenter/HelpCenter";
 import Payment from "../Pages/Payment/Payment";
+import MyProfile from "../Pages/Dashboard/User/MyProfile";
+import MyParticipatedContests from "../Pages/Dashboard/User/MyParticipatedContests";
+import MyWinningContests from "../Pages/Dashboard/User/MyWinningContests";
+import AddContest from "../Pages/Dashboard/Creator/AddContest";
+import MyCreatedContests from "../Pages/Dashboard/Creator/MyCreatedContests";
+import SubmittedTasks from "../Pages/Dashboard/Creator/SubmittedTasks";
+import EditContest from "../Pages/Dashboard/Creator/EditContest";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import ManageContests from "../Pages/Dashboard/Admin/ManageContests";
 
 // ... (Import all dashboard components here: MyProfile, MyParticipatedContests, AddContest, etc.) ...
 
@@ -69,24 +78,24 @@ export const Router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    // children: [
-    //   // Normal User Routes
-    //   { path: "my-profile", element: <MyProfile /> },
-    //   { path: "my-participated-contests", element: <MyParticipatedContest /> },
-    //   { path: "my-winning-contests", element: <MyWinningContests /> },
+    children: [
+      // Normal User Routes
+      { path: "my-profile", element: <MyProfile /> },
+      { path: "my-participated-contests", element: <MyParticipatedContests /> },
+      { path: "my-winning-contests", element: <MyWinningContests /> },
 
-    //   // Creator Routes
-    //   { path: "add-contest", element: <AddContest /> },
-    //   { path: "my-created-contests", element: <MyCreatedContests /> },
-    //   { path: "submitted-tasks", element: <SubmittedTasks /> },
-    //   { path: "edit-contest/:id", element: <EditContest /> },
+      // Creator Routes
+      { path: "add-contest", element: <AddContest /> },
+      { path: "my-created-contests", element: <MyCreatedContests /> },
+      { path: "submitted-tasks", element: <SubmittedTasks /> },
+      { path: "edit-contest/:id", element: <EditContest /> },
 
-    //   // Admin Routes
-    //   { path: "manage-users", element: <ManageUsers /> },
-    //   { path: "manage-contests", element: <ManageContests /> },
+      // Admin Routes
+      { path: "manage-users", element: <ManageUsers /> },
+      { path: "manage-contests", element: <ManageContests /> },
 
-    //   // Default Dashboard Home (redirect based on role in DashboardLayout or use this)
-    //   // { path: '', element: <DashboardHomeComponent /> }
-    // ],
+      // Default Dashboard Home (redirect based on role in DashboardLayout or use this)
+      // { path: '', element: <DashboardHomeComponent /> }
+    ],
   },
 ]);

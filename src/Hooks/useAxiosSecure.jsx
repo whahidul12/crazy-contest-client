@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 import { useEffect } from "react";
 
+const productionUrl = "https://crazy-contest-server.vercel.app";
+const developmentUrl = "http://localhost:3000";
+
+const baseURL =
+  window.location.hostname === "localhost" ? developmentUrl : productionUrl;
+
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: baseURL,
 });
 
 const useAxiosSecure = () => {
