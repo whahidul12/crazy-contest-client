@@ -48,8 +48,11 @@ const PopularContests = () => {
                 Participants: {contest.participantsCount}
               </p>
               <div className="card-actions justify-end">
-                <Link to={`/contests/${contest._id}`}>
-                  <button className="btn btn-primary btn-sm">Details</button>
+                <Link
+                  to={`/contests/${contest._id}`}
+                  className="btn btn-primary btn-sm"
+                >
+                  Details
                 </Link>
               </div>
             </div>

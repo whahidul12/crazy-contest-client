@@ -39,7 +39,7 @@ export const Router = createBrowserRouter([
         element: <AllContests />,
       },
       {
-        path: "/contest/:id",
+        path: "/contests/:id",
         element: (
           <PrivateRoute>
             <ContestDetails />

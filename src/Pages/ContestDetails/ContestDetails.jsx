@@ -261,6 +261,7 @@ const ContestDetails = () => {
               <button
                 onClick={() => setIsSubmissionModalOpen(true)}
                 className="btn btn-secondary btn-block text-lg"
+                disabled={hasRegistered}
               >
                 Submit Task
               </button>

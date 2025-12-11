@@ -62,6 +62,11 @@ const DashboardLayout = () => {
             {role === "Admin" && (
               <>
                 <li>
+                  <NavLink to="/dashboard/my-profile">
+                    <FaUser /> My Profile
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to="/dashboard/manage-users">
                     <FaUsers /> Manage Users
                   </NavLink>
@@ -77,6 +82,11 @@ const DashboardLayout = () => {
             {/* Creator Menu */}
             {role === "Contest Creator" && (
               <>
+                <li>
+                  <NavLink to="/dashboard/my-profile">
+                    <FaUser /> My Profile
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink to="/dashboard/add-contest">
                     <FaAd /> Add New Contest
