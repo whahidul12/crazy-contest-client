@@ -50,22 +50,27 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        // Get Token and store client side
         const userInfo = { email: currentUser.email };
-        axiosPublic.post("/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
+        axiosPublic
+          .post("/jwt", userInfo)
+          .then((res) => {
+            if (res.data.token) {
+              localStorage.setItem("access-token", res.data.token);
+            }
+          })
+          .catch((error) => {
+            console.error("JWT fetch failed:", error);
+          })
+          .finally(() => {
             setLoading(false);
-          }
-        });
+          });
       } else {
         localStorage.removeItem("access-token");
         setLoading(false);
       }
     });
-    return () => {
-      return unsubscribe();
-    };
+
+    return () => unsubscribe();
   }, [axiosPublic]);
 
   const authInfo = {
@@ -77,6 +82,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
   };
+
+  console.log("AuthProvider", loading);
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

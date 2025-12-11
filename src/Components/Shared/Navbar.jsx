@@ -78,8 +78,8 @@ const Navbar = () => {
             {navOptions}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-primary text-xl font-bold">
-          ContestHub
+        <Link to="/" className="text-primary text-xl font-bold">
+          Crazy Contest
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

@@ -11,7 +11,7 @@ import {
   FaUsers,
   FaWallet,
 } from "react-icons/fa";
-import useRole from "../hooks/useRole";
+import useRole from "../Hooks/useRole";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 
@@ -40,6 +40,7 @@ const DashboardLayout = () => {
           Open Menu
         </label>
         {/* <Outlet /> */}
+        <Outlet />
       </div>
       <div className="drawer-side">
         <label
