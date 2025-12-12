@@ -1,7 +1,16 @@
 import PropTypes from "prop-types";
 
-const SubmissionCheck = ({ isOpen, onClose }) => {
+const ensureProtocol = (url) => {
+  if (!url) return "";
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+  return `https://${url}`;
+};
+
+const SubmissionCheck = ({ isOpen, onClose, submissionLink }) => {
   if (!isOpen) return null;
+  const externalLink = ensureProtocol(submissionLink);
 
   return (
     <div className="modal modal-open">
@@ -14,9 +23,21 @@ const SubmissionCheck = ({ isOpen, onClose }) => {
 
         <textarea
           className="textarea textarea-bordered h-24 w-full"
-          placeholder="Paste your submission link here..."
+          placeholder="Submission link not available"
+          defaultValue={submissionLink}
+          readOnly
         ></textarea>
+
         <div className="modal-action mt-6">
+          <a
+            href={externalLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-info"
+            disabled={!submissionLink}
+          >
+            Go to Submission
+          </a>
           <button type="button" onClick={onClose} className="btn btn-error">
             Close
           </button>
@@ -29,7 +50,7 @@ const SubmissionCheck = ({ isOpen, onClose }) => {
 SubmissionCheck.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  submissionLink: PropTypes.string,
 };
 
 export default SubmissionCheck;

@@ -10,6 +10,7 @@ import SubmissionCheck from "./SubmissionCheck";
 
 const SubmittedTasks = () => {
   const [isSubmissionModalOpen, setIsSubmissionModalOpen] = useState(false);
+  const [currentSubmissionLink, setCurrentSubmissionLink] = useState("");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [searchParams] = useSearchParams();
@@ -171,7 +172,10 @@ const SubmittedTasks = () => {
                   </td>
                   <td>
                     <button
-                      onClick={() => setIsSubmissionModalOpen(true)}
+                      onClick={() => {
+                        setCurrentSubmissionLink(sub.submissionLink);
+                        setIsSubmissionModalOpen(true);
+                      }}
                       className="link link-primary block max-w-[150px] truncate text-sm"
                     >
                       View Submition
@@ -201,8 +205,12 @@ const SubmittedTasks = () => {
       {/* Submission Modal */}
       <SubmissionCheck
         isOpen={isSubmissionModalOpen}
-        onClose={() => setIsSubmissionModalOpen(false)}
+        onClose={() => {
+          setIsSubmissionModalOpen(false);
+          setCurrentSubmissionLink(""); // Clear the link on close
+        }}
         onSubmit={handleTaskSubmission}
+        submissionLink={currentSubmissionLink}
       />
     </div>
   );
