@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
-import Home from "../pages/Home/Home";
+import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/Register";
-import AllContests from "../pages/AllContests/AllContests";
-import ContestDetails from "../pages/ContestDetails/ContestDetails";
+import Login from "../Pages/Auth/Login";
+import Register from "../Pages/Auth/Register";
+import AllContests from "../Pages/AllContests/AllContests";
+import ContestDetails from "../Pages/ContestDetails/ContestDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Leaderboard from "../Pages/Leaderboard/Leaderboard";

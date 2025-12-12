@@ -5,8 +5,11 @@ import Swal from "sweetalert2";
 import { FaTrophy } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import { useState } from "react";
+import SubmissionCheck from "./SubmissionCheck";
 
 const SubmittedTasks = () => {
+  const [isSubmissionModalOpen, setIsSubmissionModalOpen] = useState(false);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [searchParams] = useSearchParams();
@@ -105,6 +108,30 @@ const SubmittedTasks = () => {
   if (isLoading)
     return <span className="loading loading-spinner loading-lg"></span>;
 
+  const handleTaskSubmission = () => {
+    // Handle submission logic (POST to backend)
+
+    axiosSecure
+      .get("/submissions")
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Task Submitted!",
+            text: "Your submission has been recorded.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setIsSubmissionModalOpen(false);
+          // Optional: You might want to refetch the contest details to show the submission status if tracked there
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        Swal.fire("Error", "Failed to submit task.", "error");
+      });
+  };
+
   return (
     <div>
       <h2 className="mb-6 text-3xl font-bold">
@@ -143,14 +170,12 @@ const SubmittedTasks = () => {
                     </div>
                   </td>
                   <td>
-                    <a
-                      href={sub.submissionLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={() => setIsSubmissionModalOpen(true)}
                       className="link link-primary block max-w-[150px] truncate text-sm"
                     >
-                      View Task
-                    </a>
+                      View Submition
+                    </button>
                   </td>
                   <td>{moment(sub.submissionTime).format("MMM Do YYYY")}</td>
                   <td>
@@ -173,6 +198,12 @@ const SubmittedTasks = () => {
           </tbody>
         </table>
       </div>
+      {/* Submission Modal */}
+      <SubmissionCheck
+        isOpen={isSubmissionModalOpen}
+        onClose={() => setIsSubmissionModalOpen(false)}
+        onSubmit={handleTaskSubmission}
+      />
     </div>
   );
 };

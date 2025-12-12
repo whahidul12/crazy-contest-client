@@ -32,7 +32,7 @@ const ContestDetails = () => {
     },
   });
 
-  // Check if the current user has already registered
+  // Check if the current user has already registered (paid)
   const {
     data: hasRegistered = false,
     isLoading: isCheckingRegistration,
@@ -45,6 +45,25 @@ const ContestDetails = () => {
         `/participated/check/${id}?email=${user.email}`,
       );
       return res.data.isRegistered;
+    },
+  });
+
+  // *** NEW: Check if the current user has already submitted the task ***
+  const {
+    data: hasSubmitted = false,
+    isLoading: isCheckingSubmission,
+    refetch: refetchSubmissionStatus, // <-- Added refetch for status update
+  } = useQuery({
+    queryKey: ["userSubmissionStatus", id, user?.email],
+    // Only check if they are registered and not checking registration status
+    enabled: !!user?.email && hasRegistered,
+    queryFn: async () => {
+      // You will need to implement a new backend endpoint for this check.
+      // For now, let's assume one exists at `/submissions/check/:contestId`
+      const res = await axiosSecure.get(
+        `/submissions/check/${id}?email=${user.email}`,
+      );
+      return res.data.hasSubmitted;
     },
   });
 
@@ -83,7 +102,8 @@ const ContestDetails = () => {
     }
   };
 
-  if (isLoading || isCheckingRegistration)
+  // *** UPDATED isLoading check ***
+  if (isLoading || isCheckingRegistration || isCheckingSubmission)
     return (
       <div className="py-20 text-center">
         <span className="loading loading-spinner loading-lg"></span>
@@ -150,7 +170,8 @@ const ContestDetails = () => {
             timer: 1500,
           });
           setIsSubmissionModalOpen(false);
-          // Optional: You might want to refetch the contest details to show the submission status if tracked there
+          // *** Crucial Step: Refetch the submission status after successful submission ***
+          refetchSubmissionStatus();
         }
       })
       .catch((err) => {
@@ -259,11 +280,23 @@ const ContestDetails = () => {
             {/* 2. Submit Task Button (Visible only after payment and if contest is not ended) */}
             {hasRegistered && !isContestEnded && (
               <button
-                onClick={() => setIsSubmissionModalOpen(true)}
+                onClick={() => {
+                  if (hasSubmitted) {
+                    Swal.fire({
+                      icon: "info",
+                      title: "Already Submitted",
+                      text: "You have already submitted your task for this contest.",
+                    });
+                    return;
+                  }
+                  setIsSubmissionModalOpen(true);
+                }}
                 className="btn btn-secondary btn-block text-lg"
-                disabled={hasRegistered}
+                // *** IMPORTANT: Add the disabled attribute here ***
+                disabled={hasSubmitted}
               >
-                Submit Task
+                {/* *** Update button text based on status *** */}
+                {hasSubmitted ? "Task Submitted" : "Submit Task"}
               </button>
             )}
             {/* 3. Status Display */}
