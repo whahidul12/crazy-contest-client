@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { FaCheck, FaTrash, FaTimes } from "react-icons/fa";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 10; // Required pagination limit
 
@@ -25,7 +26,7 @@ const ManageContests = () => {
       return res.data; // Expected structure: { contests: [...], totalCount: 100 }
     },
   });
-
+  console.log(">>>", contestData);
   const contests = contestData.contests || [];
   const totalCount = contestData.totalCount || 0;
   const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
@@ -105,6 +106,7 @@ const ManageContests = () => {
               <th>#</th>
               <th>Name</th>
               <th>Creator</th>
+              <th>View Details</th>
               <th>Deadline</th>
               <th>Status</th>
               <th className="text-center">Actions</th>
@@ -116,10 +118,19 @@ const ManageContests = () => {
                 <th>{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</th>
                 <td>{contest.name}</td>
                 <td>{contest.creatorEmail}</td>
+                <td>
+                  <Link
+                    to={`/contests/${contest._id}`}
+                    target="_blank"
+                    className="btn btn-xs btn-info text-white"
+                  >
+                    View
+                  </Link>
+                </td>
                 <td>{moment(contest.deadline).format("MMM Do YYYY")}</td>
                 <td>
                   <span
-                    className={`badge ${contest.status === "Confirmed" ? "badge-success" : contest.status === "Rejected" ? "badge-error" : "badge-warning"} text-white`}
+                    className={`badge ${contest.status === "Confirmed" ? "badge-success" : contest.status === "Rejected" ? "badge-error" : "badge-info"} text-white`}
                   >
                     {contest.status}
                   </span>
@@ -128,14 +139,20 @@ const ManageContests = () => {
                   <button
                     onClick={() => handleAction(contest._id, "Confirm")}
                     className="btn btn-xs btn-success text-white"
-                    disabled={contest.status === "Confirmed"}
+                    disabled={
+                      contest.status === "Confirmed" ||
+                      contest.status === "Closed"
+                    }
                   >
                     <FaCheck /> Confirm
                   </button>
                   <button
                     onClick={() => handleAction(contest._id, "Reject")}
                     className="btn btn-xs btn-warning text-white"
-                    disabled={contest.status === "Rejected"}
+                    disabled={
+                      contest.status === "Rejected" ||
+                      contest.status === "Closed"
+                    }
                   >
                     <FaTimes /> Reject
                   </button>

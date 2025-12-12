@@ -47,7 +47,7 @@ const Payment = () => {
             showConfirmButton: false,
             timer: 2500,
           });
-          navigate(`/contest/${paymentData.contestId}`, { replace: true });
+          navigate(`/contests/${paymentData.contestId}`, { replace: true });
         }
       })
       .catch((err) => {

@@ -155,6 +155,7 @@ const ContestDetails = () => {
       participantEmail: user.email,
       submissionLink: submissionLink,
       submissionTime: moment().toISOString(),
+      contestDeadline: contest.deadline,
       status: "Submitted",
     };
 

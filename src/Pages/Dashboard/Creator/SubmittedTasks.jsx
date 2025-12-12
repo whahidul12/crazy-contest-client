@@ -133,6 +133,7 @@ const SubmittedTasks = () => {
       });
   };
 
+  console.log("iiiiiiiiiiiiiiii", submissions);
   return (
     <div>
       <h2 className="mb-6 text-3xl font-bold">
@@ -152,7 +153,8 @@ const SubmittedTasks = () => {
               <th>Contest</th>
               <th>Participant</th>
               <th>Submission Link</th>
-              <th>Date</th>
+              <th> Created Date</th>
+              <th>End Date</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -182,6 +184,7 @@ const SubmittedTasks = () => {
                     </button>
                   </td>
                   <td>{moment(sub.submissionTime).format("MMM Do YYYY")}</td>
+                  <td>{moment(sub.contestDeadline).format("MMM Do YYYY")}</td>
                   <td>
                     <button
                       onClick={() => handleDeclareWinner(sub)}

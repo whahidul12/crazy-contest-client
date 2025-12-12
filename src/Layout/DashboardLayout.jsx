@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   FaAd,
   FaBook,
@@ -48,11 +48,13 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content flex min-h-full w-80 flex-col justify-between p-4">
+        <ul className="menu bg-base-200 text-base-content flex min-h-full w-fit flex-col justify-between p-4">
           {/* Sidebar content */}
           <div>
             <div className="mb-6 px-4">
-              <h2 className="text-primary text-2xl font-bold">ContestHub</h2>
+              <Link to={"/"} className="text-primary text-2xl font-bold">
+                ContestHub
+              </Link>
               <p className="text-sm tracking-widest uppercase opacity-70">
                 {role}
               </p>
