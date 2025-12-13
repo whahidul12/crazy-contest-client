@@ -64,17 +64,38 @@ const DashboardLayout = () => {
             {role === "Admin" && (
               <>
                 <li>
-                  <NavLink to="/dashboard/my-profile">
+                  <NavLink
+                    to="/dashboard/my-profile"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaUser /> My Profile
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manage-users">
+                  <NavLink
+                    to="/dashboard/manage-users"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaUsers /> Manage Users
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manage-contests">
+                  <NavLink
+                    to="/dashboard/manage-contests"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaList /> Manage Contests
                   </NavLink>
                 </li>
@@ -85,22 +106,50 @@ const DashboardLayout = () => {
             {role === "Contest Creator" && (
               <>
                 <li>
-                  <NavLink to="/dashboard/my-profile">
+                  <NavLink
+                    to="/dashboard/my-profile"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaUser /> My Profile
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/add-contest">
+                  <NavLink
+                    to="/dashboard/add-contest"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaAd /> Add New Contest
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/my-created-contests">
+                  <NavLink
+                    to="/dashboard/my-created-contests"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaList /> My Created Contests
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/submitted-tasks">
+                  <NavLink
+                    to="/dashboard/submitted-tasks"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaBook /> Submitted Tasks
                   </NavLink>
                 </li>
@@ -111,17 +160,38 @@ const DashboardLayout = () => {
             {role === "Normal User" && (
               <>
                 <li>
-                  <NavLink to="/dashboard/my-profile">
+                  <NavLink
+                    to="/dashboard/my-profile"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaUser /> My Profile
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/my-participated-contests">
+                  <NavLink
+                    to="/dashboard/my-participated-contests"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaWallet /> My Participated Contests
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/my-winning-contests">
+                  <NavLink
+                    to="/dashboard/my-winning-contests"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn btn-accent my-1"
+                        : "btn btn-accent btn-soft my-1"
+                    }
+                  >
                     <FaTrophy /> My Winning Contests
                   </NavLink>
                 </li>
@@ -148,7 +218,7 @@ const DashboardLayout = () => {
             <li>
               <button
                 onClick={handleLogOut}
-                className="bg-red-500 text-white hover:bg-red-600"
+                className="btn bg-red-500 text-white hover:bg-red-600"
               >
                 Logout
               </button>

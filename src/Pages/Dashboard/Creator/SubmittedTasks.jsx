@@ -195,7 +195,15 @@ const SubmittedTasks = () => {
                     </button>
                     {!contestStatus.canDeclare && (
                       <span className="text-error mt-1 block text-xs">
-                        {contestStatus.status}
+                        {contestStatus.status === "Deadline Not Met" ? (
+                          <span className="mt-1 block w-fit rounded-sm bg-red-200 px-2 py-1 text-xs text-red-900">
+                            {contestStatus.status}
+                          </span>
+                        ) : (
+                          <span className="mt-1 block w-fit rounded-sm bg-green-200 px-3 py-1 text-xs text-green-900">
+                            {contestStatus.status}
+                          </span>
+                        )}
                       </span>
                     )}
                   </td>

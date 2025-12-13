@@ -15,7 +15,7 @@ import useAuth from "../../../Hooks/useAuth";
 const MyProfile = () => {
   const { user, updateUserProfile } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   // Fetch user stats from DB (Needs win percentage, etc.)
   const { data: userData = {}, refetch } = useQuery({
@@ -65,6 +65,13 @@ const MyProfile = () => {
         <div className="card-body">
           <h2 className="card-title mb-4 text-2xl">Edit Profile</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="form-control flex justify-center">
+              <img
+                src={user?.photoURL}
+                // {...register("name")}
+                className="w-1/2 rounded-full"
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
