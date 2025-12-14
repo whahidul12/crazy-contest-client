@@ -66,13 +66,9 @@ const MyProfile = () => {
           <h2 className="card-title mb-4 text-2xl">Edit Profile</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="form-control flex justify-center">
-              <img
-                src={user?.photoURL}
-                // {...register("name")}
-                className="w-1/2 rounded-full"
-              />
+              <img src={user?.photoURL} className="w-1/2 rounded-full" />
             </div>
-            <div className="form-control">
+            <div className="form-control flex flex-col space-y-1">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -80,10 +76,10 @@ const MyProfile = () => {
                 type="text"
                 defaultValue={user?.displayName}
                 {...register("name")}
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control flex flex-col space-y-1">
               <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
@@ -91,10 +87,10 @@ const MyProfile = () => {
                 type="text"
                 defaultValue={user?.photoURL}
                 {...register("photoURL")}
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control flex flex-col space-y-1">
               <label className="label">
                 <span className="label-text">Address</span>
               </label>
@@ -103,7 +99,7 @@ const MyProfile = () => {
                 placeholder="Your address"
                 defaultValue={userData.address}
                 {...register("address")}
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
             <button className="btn btn-primary mt-4">Update Profile</button>

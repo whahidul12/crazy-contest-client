@@ -1,60 +1,133 @@
-import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import bannerOne from "../../assets/banner-1.jpg";
+import bannerTwo from "../../assets/banner-2.jpg";
+import bannerThree from "../../assets/banner-3.jpg";
+import bannerFour from "../../assets/banner-4.jpg";
+import bannerFive from "../../assets/banner-5.jpg";
 
 const Banner = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  // Banner slides data
+  const slides = [
+    {
+      id: 6,
+      image: bannerThree,
+      title: "Unleash Your Skill, Claim Your Prize",
+      description:
+        "The ultimate proving ground for coders, creatives, and innovators. Join high-stakes global challenges and turn talent into reward.",
+    },
+    {
+      id: 5,
+      image: bannerTwo,
+      title: "Where Imagination Meets Execution",
+      description:
+        "Compete in high-stakes design sprints—from cyberpunk concept art to minimalist brand identities that leave a lasting mark.",
+    },
+    {
+      id: 4,
+      image: bannerOne,
+      title: "Code Your Way to the Top",
+      description:
+        "From optimized MongoDB schemas to complex AI integrations, prove your technical prowess and win the ultimate dev prize",
+    },
+    {
+      id: 3,
+      image: bannerFour,
+      title: "Craft Stories That Matter",
+      description:
+        "Deep-dive into technical guides, security audits, and industry trends. Your perspective is the bridge between data and understanding",
+    },
+    {
+      id: 2,
+      image: bannerFive,
+      title: "Evaluate the Experience || The Final Verdict",
+      description:
+        "Break down mechanics, lore, and performance. Your deep-dive reviews help define what makes a masterpiece and what falls short",
+    },
+    {
+      id: 1,
+      image: bannerFive,
+      title: "From Vision to Venture",
+      description:
+        "Present your roadmap for change. We’re looking for the next generation of sustainable, scalable, and socially impactful business models.",
+    },
+  ];
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log("Searching for:", searchTerm);
-    // Implement search redirection or logic here
-  };
+  // Auto-slide effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
 
+    return () => clearInterval(timer);
+  }, [slides.length]);
   return (
-    <div className="hero bg-base-200 relative min-h-[500px] overflow-hidden">
-      {/* Abstract Background Design */}
-      <div className="from-primary/10 to-secondary/10 absolute inset-0 z-0 bg-linear-to-r"></div>
-
-      <div className="hero-content text-neutral-content relative z-10 text-center">
-        <div className="max-w-2xl">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-base-content mb-5 text-5xl font-bold"
-          >
-            Unleash Your Creativity
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-base-content mb-5"
-          >
-            Join the world's leading contest platform. Participate in Design,
-            Coding, Writing, and Gaming challenges to win big prizes!
-          </motion.p>
-
+    <div className="relative min-h-[700px] w-full">
+      <div className="relative h-[700px] w-full overflow-hidden">
+        {slides.map((slide, index) => (
           <motion.div
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.8 }}
+            key={slide.id}
+            className={`absolute inset-0 ${index === currentSlide ? "z-10" : "z-0"}`}
+            initial={{ opacity: index === currentSlide ? 1 : 0 }}
+            animate={{ opacity: index === currentSlide ? 1 : 0 }}
+            transition={{ duration: 1 }}
           >
-            <form
-              onSubmit={handleSearch}
-              className="join w-full max-w-md shadow-lg"
+            <div
+              className="h-full w-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <input
-                type="text"
-                className="input input-bordered join-item w-full text-black"
-                placeholder="Search contest types (e.g., Design)"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <button className="btn btn-primary join-item">Search</button>
-            </form>
+              <div className="flex h-full w-full items-center justify-center bg-black/20">
+                <div className="px-4 text-center text-white">
+                  <motion.h1
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="mb-6 text-5xl font-bold text-shadow-black text-shadow-sm md:text-7xl"
+                  >
+                    {slide.title}
+                  </motion.h1>
+                  <motion.p
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="mx-auto mb-8 max-w-4xl text-xl text-shadow-black text-shadow-md md:text-2xl"
+                  >
+                    {slide.description}
+                  </motion.p>
+                  <motion.div
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <Link to="/all-contests">
+                      <button className="btn btn-primary btn-lg">
+                        Explore Gallery
+                      </button>
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
           </motion.div>
+        ))}
+
+        {/* Slide indicators */}
+        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 transform gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-3 w-3 rounded-full transition-all ${
+                index === currentSlide
+                  ? "w-8 bg-white"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>

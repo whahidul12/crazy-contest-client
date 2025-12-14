@@ -5,7 +5,7 @@ import WinnerSection from "./WinnerSection";
 
 const Home = () => {
   return (
-    <div>
+    <div className="-mt-20">
       <Helmet>
         <title>ContestHub | Home</title>
       </Helmet>

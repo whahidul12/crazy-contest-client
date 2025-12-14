@@ -80,30 +80,48 @@ const AddContest = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="card-body bg-base-100 rounded-xl p-6 shadow-xl"
       >
-        {/* Row 1: Name, Type, Price, Prize Money */}
+        {/* Row 1: Name */}
+        <div className="form-control form-control flex flex-col space-y-1">
+          <label className="label">
+            <span className="label-text">Contest Name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="e.g., Summer Design Challenge"
+            {...register("name", { required: true })}
+            className="input input-bordered w-full"
+          />
+          {errors.name && (
+            <span className="text-sm text-red-500">Name is required</span>
+          )}
+        </div>
+
+        {/* Row 2: Image URL, Type, Price, Prize Money */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-          <div className="form-control md:col-span-2">
+          <div className="form-control form-control flex flex-col space-y-1 md:col-span-2">
             <label className="label">
-              <span className="label-text">Contest Name</span>
+              <span className="label-text">Contest Image URL</span>
             </label>
             <input
               type="text"
-              placeholder="e.g., Summer Design Challenge"
-              {...register("name", { required: true })}
-              className="input input-bordered"
+              placeholder="Image URL"
+              {...register("image", { required: true })}
+              className="input input-bordered w-full"
             />
-            {errors.name && (
-              <span className="text-sm text-red-500">Name is required</span>
+            {errors.image && (
+              <span className="text-sm text-red-500">
+                Image URL is required
+              </span>
             )}
           </div>
-          <div className="form-control">
+          <div className="form-control form-control flex flex-col space-y-1">
             <label className="label">
               <span className="label-text">Contest Type</span>
             </label>
             <select
               defaultValue=""
               {...register("type", { required: true })}
-              className="select select-bordered"
+              className="select select-bordered w-full"
             >
               <option value="" disabled>
                 Select Type
@@ -118,7 +136,7 @@ const AddContest = () => {
               <span className="text-sm text-red-500">Type is required</span>
             )}
           </div>
-          <div className="form-control">
+          <div className="form-control form-control flex flex-col space-y-1">
             <label className="label">
               <span className="label-text">Deadline</span>
             </label>
@@ -137,25 +155,9 @@ const AddContest = () => {
           </div>
         </div>
 
-        {/* Row 2: Image URL */}
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Contest Image URL</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Image URL"
-            {...register("image", { required: true })}
-            className="input input-bordered"
-          />
-          {errors.image && (
-            <span className="text-sm text-red-500">Image URL is required</span>
-          )}
-        </div>
-
         {/* Row 3: Price and Prize Money */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="form-control">
+          <div className="form-control form-control flex flex-col space-y-1">
             <label className="label">
               <span className="label-text">Entry Fee ($)</span>
             </label>
@@ -164,7 +166,7 @@ const AddContest = () => {
               step="0.01"
               placeholder="e.g., 5.00"
               {...register("price", { required: true, min: 0 })}
-              className="input input-bordered"
+              className="input input-bordered w-full"
             />
             {errors.price && (
               <span className="text-sm text-red-500">
@@ -172,7 +174,7 @@ const AddContest = () => {
               </span>
             )}
           </div>
-          <div className="form-control">
+          <div className="form-control form-control flex flex-col space-y-1">
             <label className="label">
               <span className="label-text">Prize Money ($)</span>
             </label>
@@ -181,7 +183,7 @@ const AddContest = () => {
               step="0.01"
               placeholder="e.g., 500.00"
               {...register("prizeMoney", { required: true, min: 0 })}
-              className="input input-bordered"
+              className="input input-bordered w-full"
             />
             {errors.prizeMoney && (
               <span className="text-sm text-red-500">
@@ -192,14 +194,14 @@ const AddContest = () => {
         </div>
 
         {/* Row 4: Description */}
-        <div className="form-control">
+        <div className="form-control form-control flex flex-col space-y-1">
           <label className="label">
             <span className="label-text">Contest Description</span>
           </label>
           <textarea
             placeholder="Brief summary of the contest..."
             {...register("description", { required: true })}
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24 w-full"
           ></textarea>
           {errors.description && (
             <span className="text-sm text-red-500">
@@ -209,14 +211,14 @@ const AddContest = () => {
         </div>
 
         {/* Row 5: Task Instruction */}
-        <div className="form-control">
+        <div className="form-control form-control flex flex-col space-y-1">
           <label className="label">
             <span className="label-text">Task Instructions</span>
           </label>
           <textarea
             placeholder="Detailed instructions for participants..."
             {...register("taskInstruction", { required: true })}
-            className="textarea textarea-bordered h-36"
+            className="textarea textarea-bordered h-36 w-full"
           ></textarea>
           {errors.taskInstruction && (
             <span className="text-sm text-red-500">

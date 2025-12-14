@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import login_img from "../../assets/login-img.jpg";
 
 const Login = () => {
   const { signIn, googleSignIn } = useAuth();
@@ -44,12 +45,11 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        // Save user to DB if new
         const userInfo = {
           name: user.displayName,
           email: user.email,
           photo: user.photoURL,
-          role: "Normal User", // Default role for Google sign-in
+          role: "Normal User",
         };
         axiosPublic.post("/users", userInfo).then(() => {
           Swal.fire({
@@ -77,13 +77,6 @@ const Login = () => {
         <title>ContestHub | Login</title>
       </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login Now!</h1>
-          <p className="py-6">
-            Access your dashboard, participate in contests, and manage your
-            creations.
-          </p>
-        </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
@@ -133,6 +126,9 @@ const Login = () => {
               </Link>
             </p>
           </div>
+        </div>
+        <div className="hidden text-center lg:block lg:text-left">
+          <img src={login_img} alt="log_in_frog" className="max-h-[600px]" />
         </div>
       </div>
     </div>

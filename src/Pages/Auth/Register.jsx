@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import login_img from "../../assets/login-img.jpg";
 
 const Register = () => {
   const { createUser, updateUserProfile, logOut } = useAuth();
@@ -76,12 +77,6 @@ const Register = () => {
         <title>ContestHub | Register</title>
       </Helmet>
       <div className="hero-content flex-col lg:flex-row">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Join ContestHub!</h1>
-          <p className="py-6">
-            Sign up to start participating in amazing creative contests today.
-          </p>
-        </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
@@ -166,6 +161,9 @@ const Register = () => {
               Login here
             </Link>
           </p>
+        </div>
+        <div className="hidden text-center lg:block lg:text-left">
+          <img src={login_img} alt="log_in_frog" className="max-h-[600px]" />
         </div>
       </div>
     </div>
