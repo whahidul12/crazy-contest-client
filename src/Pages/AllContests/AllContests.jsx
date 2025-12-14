@@ -33,20 +33,19 @@ const AllContests = () => {
     },
   });
   // Fetch all Ended contests
-  const { data: endedContests = [], isLoading: endedContestsLoading } =
-    useQuery({
-      queryKey: ["endedContests", endActiveTab],
-      queryFn: async () => {
-        let url = "/contests/closed";
-        if (activeTab !== "All") {
-          url = `/contests/closed?type=${endActiveTab}`;
-        }
-        const res = await axiosPublic.get(url);
-        return res.data;
-      },
-    });
+  const { data: endedContests = [] } = useQuery({
+    queryKey: ["endedContests", endActiveTab],
+    queryFn: async () => {
+      let url = "/contests/closed";
+      if (endActiveTab !== "All") {
+        url = `/contests/closed?type=${endActiveTab}`;
+      }
+      const res = await axiosPublic.get(url);
+      return res.data;
+    },
+  });
 
-  if (isLoading || endedContestsLoading)
+  if (isLoading)
     return (
       <div className="py-20 text-center">
         <span className="loading loading-spinner loading-lg"></span>
@@ -125,7 +124,7 @@ const AllContests = () => {
             <motion.a
               key={type}
               role="tab"
-              className={`tab ${endActiveTab === type ? "tab-active bg-primary text-primary-content" : ""}`}
+              className={`tab ${endActiveTab === type ? "tab-active text-primary-content bg-red-500" : ""}`}
               onClick={() => setEndActiveTab(type)}
               whileHover={{ scale: 1.05 }}
             >

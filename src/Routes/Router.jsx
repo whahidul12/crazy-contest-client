@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Link } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -10,7 +10,6 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Leaderboard from "../Pages/Leaderboard/Leaderboard";
 import HelpCenter from "../Pages/HelpCenter/HelpCenter";
-import Payment from "../Pages/Payment/Payment";
 import MyProfile from "../Pages/Dashboard/User/MyProfile";
 import MyParticipatedContests from "../Pages/Dashboard/User/MyParticipatedContests";
 import MyWinningContests from "../Pages/Dashboard/User/MyWinningContests";
@@ -21,8 +20,9 @@ import EditContest from "../Pages/Dashboard/Creator/EditContest";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageContests from "../Pages/Dashboard/Admin/ManageContests";
 import AdminRoute from "./AdminRoute";
-
-// ... (Import all dashboard components here: MyProfile, MyParticipatedContests, AddContest, etc.) ...
+import PaymentSuccessHandler from "../Pages/Payment/PaymentSuccessHandler";
+import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
+import PaymentFailure from "../Pages/Payment/PaymentFailure";
 
 export const Router = createBrowserRouter([
   {
@@ -62,14 +62,6 @@ export const Router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      {
-        path: "/payment/:id",
-        element: (
-          <PrivateRoute>
-            <Payment />
-          </PrivateRoute>
-        ),
-      },
     ],
   },
   {
@@ -108,9 +100,30 @@ export const Router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-
-      // Default Dashboard Home (redirect based on role in DashboardLayout or use this)
-      // { path: '', element: <DashboardHomeComponent /> }
     ],
+  },
+  {
+    path: "/return/payment-success",
+    element: (
+      <PrivateRoute>
+        <PaymentSuccessHandler />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/payment-success",
+    element: (
+      <PrivateRoute>
+        <PaymentSuccess />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/payment-failure",
+    element: (
+      <PrivateRoute>
+        <PaymentFailure />
+      </PrivateRoute>
+    ),
   },
 ]);

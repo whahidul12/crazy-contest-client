@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import moment from "moment";
@@ -14,10 +14,12 @@ import useAuth from "../../Hooks/useAuth";
 
 const ContestDetails = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const currentPath = location.pathname;
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [isSubmissionModalOpen, setIsSubmissionModalOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Fetch contest details
   const {
@@ -124,11 +126,12 @@ const ContestDetails = () => {
     // You will implement the Payment component in Part 3
 
     // Prepare state for payment redirection (Crucial for successful payment callback)
-    const paymentData = {
+    const paymentInfo = {
       contestId: contest._id,
       entryFee: contest.price,
       contestName: contest.name,
       participantEmail: user.email,
+      returnPath: currentPath,
     };
 
     Swal.fire({
@@ -139,10 +142,15 @@ const ContestDetails = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Pay Now",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         // Navigate to the payment route, passing data via state
-        navigate(`/payment/${contest._id}`, { state: paymentData });
+        // navigate(`/payment/${contest._id}`, { state: paymentInfo });
+        const res = await axiosSecure.post(
+          "/create-checkout-session",
+          paymentInfo,
+        );
+        window.location.href = res.data.url;
       }
     });
   };
