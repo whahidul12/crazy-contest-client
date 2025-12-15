@@ -1,35 +1,116 @@
-import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import React from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+
+// --- Configuration for Framer Motion Variants ---
+
+// Controls the initial appearance and entry animation of the whole footer
+const footerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+      delay: 0.5, // Start animation after a short delay
+    },
+  },
+};
+
+// Controls the hover/tap animation for individual social icons
+const iconVariants = {
+  hover: {
+    scale: 1.2,
+    y: -5,
+    rotate: 5,
+    transition: { duration: 0.2 },
+  },
+  tap: {
+    scale: 0.9,
+  },
+};
+
+// --- The Footer Component ---
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  // Social Media Links Data
+  const socialLinks = [
+    { icon: FaGithub, href: "https://github.com/yourprofile", label: "GitHub" },
+    {
+      icon: FaLinkedin,
+      href: "https://linkedin.com/in/yourprofile",
+      label: "LinkedIn",
+    },
+    {
+      icon: FaTwitter,
+      href: "https://twitter.com/yourprofile",
+      label: "Twitter",
+    },
+    { icon: FaEnvelope, href: "mailto:youremail@example.com", label: "Email" },
+  ];
+
   return (
-    <footer className="footer footer-center bg-base-200 text-base-content mt-10 rounded p-10">
-      <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">Home</a>
-        <a className="link link-hover">All Contests</a>
-        <a className="link link-hover">Help Center</a>
-        <a className="link link-hover">Terms of Service</a>
-      </nav>
-      <nav>
-        <div className="grid grid-flow-col gap-4 text-2xl">
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
-            <FaFacebook className="text-blue-600" />
+    <motion.footer
+      // Apply the entry animation variants
+      variants={footerVariants}
+      initial="hidden"
+      animate="visible"
+      // Tailwind CSS for styling (replace with your preferred CSS solution)
+      className="bg-secondary-c w-full overflow-hidden py-8 text-gray-400 shadow-2xl"
+    >
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-4 sm:px-6 lg:px-8">
+        {/* Social Icons Section */}
+        <div className="mb-6 flex space-x-6">
+          {socialLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                // Apply the hover/tap animation variants
+                variants={iconVariants}
+                whileHover="hover"
+                whileTap="tap"
+                aria-label={link.label}
+                className="text-primary-light transition-colors duration-300 hover:text-white"
+              >
+                <Icon size={24} />
+              </motion.a>
+            );
+          })}
+        </div>
+
+        {/* Navigation/Information Links (Optional) */}
+        <div className="text-primary-light mb-4 flex space-x-6 text-sm">
+          <a href="/privacy" className="transition-colors hover:text-white">
+            Privacy Policy
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            <FaLinkedin className="text-blue-800" />
+          <a href="/terms" className="transition-colors hover:text-white">
+            Terms of Service
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <FaTwitter className="text-sky-500" />
+          <a href="/contact" className="transition-colors hover:text-white">
+            Contact
           </a>
         </div>
-      </nav>
-      <aside>
-        <div className="flex flex-col items-center gap-2">
-          {/* Placeholder for Logo */}
-          <div className="text-xl font-bold">ContestHub</div>
-          <p>Copyright © 2025 - All right reserved by ContestHub</p>
-        </div>
-      </aside>
-    </footer>
+
+        {/* Copyright Text */}
+        <motion.p
+          className="text-primary-light text-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          &copy; {currentYear} Crazy Contest. All rights reserved.
+        </motion.p>
+      </div>
+    </motion.footer>
   );
 };
 

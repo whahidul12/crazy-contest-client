@@ -8,22 +8,22 @@ import {
 
 const HelpCenter = () => {
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="bg-primary-light dark:bg-primary-dark mx-auto -mt-20 px-4 pt-24 pb-10">
       <Helmet>
         <title>ContestHub | Help Center</title>
       </Helmet>
-      <h1 className="mb-10 flex items-center justify-center gap-3 text-center text-4xl font-bold">
+      <h1 className="text-secondary-c dark:text-primary-light mb-10 flex items-center justify-center gap-3 text-center text-4xl font-bold">
         <FaQuestionCircle /> ContestHub Help Center
       </h1>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {/* FAQ Section */}
-        <div className="bg-base-100 rounded-xl p-6 shadow-xl">
+        <div className="bg-card-light/50 dark:bg-card-dark/50 text-primary-dark dark:text-primary-light rounded-xl p-6 shadow-xl">
           <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
             <FaBook /> Frequently Asked Questions (FAQ)
           </h2>
           <div className="space-y-4">
-            <div className="collapse-arrow bg-base-200 collapse">
+            <div className="collapse-arrow bg-card-light dark:bg-card-dark collapse">
               <input type="radio" name="my-accordion-2" defaultChecked />
               <div className="collapse-title text-xl font-medium">
                 How do I declare a winner?
@@ -37,7 +37,7 @@ const HelpCenter = () => {
                 </p>
               </div>
             </div>
-            <div className="collapse-arrow bg-base-200 collapse">
+            <div className="collapse-arrow bg-card-light dark:bg-card-dark collapse">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium">
                 What is the entry fee used for?
@@ -50,7 +50,7 @@ const HelpCenter = () => {
                 </p>
               </div>
             </div>
-            <div className="collapse-arrow bg-base-200 collapse">
+            <div className="collapse-arrow bg-card-light dark:bg-card-dark collapse">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium">
                 How is the Leaderboard ranking determined?
@@ -66,7 +66,7 @@ const HelpCenter = () => {
         </div>
 
         {/* Contact and Support Section */}
-        <div className="bg-base-100 rounded-xl p-6 shadow-xl">
+        <div className="text-primary-dark dark:text-primary-light bg-card-light/50 dark:bg-card-dark/50 rounded-xl p-6 shadow-xl">
           <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
             <FaBullhorn /> Contact & Support
           </h2>

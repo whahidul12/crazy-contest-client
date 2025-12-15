@@ -78,11 +78,11 @@ const AllContests = () => {
   // Removed the commented-out isLoading block for cleaner code
 
   return (
-    <div className="tabs tabs-box">
+    <div className="tabs tabs-box bg-primary-light dark:bg-primary-dark -mt-20">
       <input
         type="radio"
-        name="my_tabs_2"
-        className="tab w-1/2"
+        name="my_tabs_6"
+        className="tab text-secondary-o dark:text-primary-light border-secondary-o mt-20 w-1/2 border"
         aria-label="Ongoing Contest"
         defaultChecked
       />
@@ -90,31 +90,31 @@ const AllContests = () => {
         <Helmet>
           <title>ContestHub | All Ongoing Contests</title>
         </Helmet>
-        <h1 className="text-center text-4xl font-bold">
+        <h1 className="text-secondary-c dark:text-primary-light text-center text-3xl font-bold sm:text-4xl">
           Explore All Ongoing Contests
         </h1>
-        {/* Search Section (No changes here, the form is already set up) */}
         <motion.div
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           className="my-10 flex justify-center"
         >
           <form
-            onSubmit={handleSearch} // This now sets the searchQuery state
+            onSubmit={handleSearch}
             className="join mx-auto w-11/12 shadow-lg sm:w-lg"
           >
             <input
               type="text"
-              className="input input-bordered join-item w-full text-black"
-              placeholder="Search contest name or creator name" // Updated placeholder for clarity
+              className="input input-bordered join-item bg-card-light dark:bg-card-dark border-primary-dark/30 dark:border-primary-light/30 placeholder:text-primary-dark/50 dark:placeholder:text-primary-light/50 text-primary-dark dark:text-primary-light w-full border"
+              placeholder="Search contest name or creator name"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <button className="btn btn-primary join-item">Search</button>
+            <button className="btn bg-secondary-o join-item border-none">
+              Search
+            </button>
           </form>
         </motion.div>
 
-        {/* Tabs for Filtering */}
         <div
           role="tablist"
           className="tabs tabs-boxed mb-10 justify-center overflow-x-auto"
@@ -123,9 +123,8 @@ const AllContests = () => {
             <motion.a
               key={type}
               role="tab"
-              className={`tab ${activeTab === type ? "tab-active bg-primary text-primary-content" : ""}`}
-              onClick={() => handleTabClick(type)} // Use the new handler
-              whileHover={{ scale: 1.05 }}
+              className={`tab ${activeTab === type ? "tab-active bg-secondary-o text-primary-dark dark:text-primary-light rounded-sm border-none" : "text-primary-dark dark:text-primary-light"}`}
+              onClick={() => handleTabClick(type)}
             >
               {type}
             </motion.a>
@@ -138,14 +137,13 @@ const AllContests = () => {
             <span className="loading loading-spinner loading-lg"></span>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {contests.length > 0 ? (
               contests.map((contest) => (
                 <ContestCard key={contest._id} contest={contest} />
               ))
             ) : (
               <p className="text-error col-span-full text-center text-xl">
-                {/* Updated message to reflect search/filter state */}
                 No contests found for the current filter/search.
               </p>
             )}
@@ -155,15 +153,15 @@ const AllContests = () => {
 
       <input
         type="radio"
-        name="my_tabs_2"
-        className="tab w-1/2"
+        name="my_tabs_6"
+        className="tab text-secondary-o dark:text-primary-light border-secondary-o mt-20 w-1/2 border"
         aria-label="Ended Contest"
       />
       <div className="tab-content container mx-auto px-4 py-10">
         <Helmet>
           <title>ContestHub | All Ended Contests</title>
         </Helmet>
-        <h1 className="mb-10 text-center text-4xl font-bold">
+        <h1 className="text-secondary-c dark:text-primary-light mb-10 text-center text-4xl font-bold">
           Explore All Ended Contests
         </h1>
 
@@ -176,9 +174,8 @@ const AllContests = () => {
             <motion.a
               key={type}
               role="tab"
-              className={`tab ${endActiveTab === type ? "tab-active text-primary-content bg-red-500" : ""}`}
+              className={`tab ${endActiveTab === type ? "tab-active text-primary-content bg-secondary-o rounded-sm border-none" : "text-primary-dark dark:text-primary-light"}`}
               onClick={() => setEndActiveTab(type)}
-              whileHover={{ scale: 1.05 }}
             >
               {type}
             </motion.a>

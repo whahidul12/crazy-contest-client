@@ -5,7 +5,7 @@ import WinnerSection from "./WinnerSection";
 
 const Home = () => {
   return (
-    <div className="-mt-20">
+    <div className="bg-primary-light dark:bg-primary-dark -mt-20">
       <Helmet>
         <title>ContestHub | Home</title>
       </Helmet>
@@ -15,8 +15,10 @@ const Home = () => {
         <WinnerSection />
 
         {/* Extra Static Section */}
-        <div className="my-16 px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold">Why Choose ContestHub?</h2>
+        <div className="px-4 pb-16 text-center sm:px-0">
+          <h2 className="text-secondary-c dark:text-primary-light mb-8 text-3xl font-bold sm:text-4xl">
+            Why Choose ContestHub?
+          </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="bg-base-100 rounded-lg border p-6 shadow-sm">
               <h3 className="text-xl font-bold">Secure Payments</h3>

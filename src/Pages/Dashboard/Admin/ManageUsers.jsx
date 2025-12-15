@@ -71,13 +71,13 @@ const ManageUsers = () => {
   };
 
   return (
-    <div>
+    <div className="text-primary-dark dark:text-primary-light">
       <h2 className="mb-6 text-3xl font-bold">Manage Users ({users.length})</h2>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
-            <tr>
-              <th>#</th>
+            <tr className="text-primary-dark dark:text-primary-light bg-secondary-o/50">
+              <th className="">#</th>
               <th>Name</th>
               <th>Email</th>
               <th>Current Role</th>

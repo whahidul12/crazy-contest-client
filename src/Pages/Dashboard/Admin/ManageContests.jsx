@@ -95,14 +95,14 @@ const ManageContests = () => {
   };
 
   return (
-    <div>
+    <div className="text-primary-dark dark:text-primary-light">
       <h2 className="mb-6 text-3xl font-bold">
         Manage Contests ({totalCount})
       </h2>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
-            <tr>
+            <tr className="text-primary-dark dark:text-primary-light bg-secondary-o/50">
               <th>#</th>
               <th>Name</th>
               <th>Creator</th>

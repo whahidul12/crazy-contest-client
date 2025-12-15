@@ -31,14 +31,16 @@ const DashboardLayout = () => {
         <title>ContestHub | Dashboard</title>
       </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col p-8">
+      <div className="drawer-content bg-primary-dark flex min-h-screen flex-col p-8">
         {/* Page content here */}
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button mb-4 lg:hidden"
-        >
-          Open Menu
-        </label>
+        <div>
+          <label
+            htmlFor="my-drawer-2"
+            className="btn bg-secondary-c drawer-button float-right mb-4 w-fit lg:hidden"
+          >
+            Open Menu
+          </label>
+        </div>
         {/* <Outlet /> */}
         <Outlet />
       </div>
@@ -48,12 +50,12 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content flex min-h-full w-fit flex-col justify-between p-4">
+        <ul className="menu bg-card-dark text-primary-light flex min-h-full w-fit flex-col justify-between p-4">
           {/* Sidebar content */}
           <div>
             <div className="mb-6 px-4">
-              <Link to={"/"} className="text-primary text-2xl font-bold">
-                ContestHub
+              <Link to={"/"} className="text-secondary-c text-2xl font-bold">
+                <span>Crazy Contest</span>
               </Link>
               <p className="text-sm tracking-widest uppercase opacity-70">
                 {role}
@@ -68,8 +70,8 @@ const DashboardLayout = () => {
                     to="/dashboard/my-profile"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaUser /> My Profile
@@ -80,8 +82,8 @@ const DashboardLayout = () => {
                     to="/dashboard/manage-users"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaUsers /> Manage Users
@@ -92,8 +94,8 @@ const DashboardLayout = () => {
                     to="/dashboard/manage-contests"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaList /> Manage Contests
@@ -110,8 +112,8 @@ const DashboardLayout = () => {
                     to="/dashboard/my-profile"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaUser /> My Profile
@@ -122,8 +124,8 @@ const DashboardLayout = () => {
                     to="/dashboard/add-contest"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaAd /> Add New Contest
@@ -134,8 +136,8 @@ const DashboardLayout = () => {
                     to="/dashboard/my-created-contests"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaList /> My Created Contests
@@ -146,8 +148,8 @@ const DashboardLayout = () => {
                     to="/dashboard/submitted-tasks"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaBook /> Submitted Tasks
@@ -164,8 +166,8 @@ const DashboardLayout = () => {
                     to="/dashboard/my-profile"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaUser /> My Profile
@@ -176,8 +178,8 @@ const DashboardLayout = () => {
                     to="/dashboard/my-participated-contests"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaWallet /> My Participated Contests
@@ -188,8 +190,8 @@ const DashboardLayout = () => {
                     to="/dashboard/my-winning-contests"
                     className={({ isActive }) =>
                       isActive
-                        ? "btn btn-accent my-1"
-                        : "btn btn-accent btn-soft my-1"
+                        ? "btn bg-secondary-c my-1 border-none"
+                        : "btn bg-secondary-c/30 my-1 border-none"
                     }
                   >
                     <FaTrophy /> My Winning Contests
@@ -218,7 +220,7 @@ const DashboardLayout = () => {
             <li>
               <button
                 onClick={handleLogOut}
-                className="btn bg-red-500 text-white hover:bg-red-600"
+                className="btn border-none bg-red-500 text-white hover:bg-red-600"
               >
                 Logout
               </button>

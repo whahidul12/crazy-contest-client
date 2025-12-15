@@ -5,12 +5,9 @@ import { FaCrown, FaTrophy } from "react-icons/fa";
 
 const Leaderboard = () => {
   const axiosPublic = useAxiosPublic();
-
-  // Fetch leaderboard data (ranked users by wins)
   const { data: leaderboard = [], isLoading } = useQuery({
     queryKey: ["leaderboard"],
     queryFn: async () => {
-      // Backend should return users sorted by 'wins' count in descending order
       const res = await axiosPublic.get("/users/leaderboard");
       return res.data;
     },
@@ -24,19 +21,22 @@ const Leaderboard = () => {
     );
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="bg-primary-light dark:bg-primary-dark mx-auto -mt-20 min-h-screen px-4 py-10 pt-24">
       <Helmet>
         <title>ContestHub | Leaderboard</title>
       </Helmet>
       <h1 className="text-primary mb-10 flex items-center justify-center gap-4 text-center text-5xl font-extrabold">
-        <FaCrown className="text-yellow-500" /> Contest Champions{" "}
+        <FaCrown className="text-yellow-500" />{" "}
+        <span className="text-secondary-c dark:text-primary-light">
+          Contest Champions
+        </span>{" "}
         <FaCrown className="text-yellow-500" />
       </h1>
 
-      <div className="bg-base-100 overflow-x-auto rounded-xl p-6 shadow-2xl">
+      <div className="bg-card-light/50 dark:bg-card-dark/50 overflow-x-auto rounded-xl p-6 shadow-2xl">
         <table className="table w-full">
           <thead>
-            <tr className="text-lg">
+            <tr className="text-primary-dark dark:text-primary-light text-lg">
               <th>Rank</th>
               <th>User</th>
               <th className="text-center">Contests Won</th>
@@ -46,7 +46,11 @@ const Leaderboard = () => {
             {leaderboard.map((user, index) => (
               <tr
                 key={user._id}
-                className={index < 3 ? "bg-base-200 font-bold" : ""}
+                className={
+                  index < 3
+                    ? "bg-card-light dark:bg-card-dark text-primary-dark dark:text-primary-light font-bold"
+                    : ""
+                }
               >
                 <td className="text-2xl font-bold">
                   {index === 0 ? (
@@ -77,7 +81,7 @@ const Leaderboard = () => {
                     </div>
                   </div>
                 </td>
-                <td className="text-success text-center text-xl">
+                <td className="text-primary-dark dark:text-primary-light text-center text-xl">
                   {user.wins || 0}
                 </td>
               </tr>

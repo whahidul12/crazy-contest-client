@@ -43,7 +43,7 @@ const Banner = () => {
     {
       id: 2,
       image: bannerFive,
-      title: "Evaluate the Experience || The Final Verdict",
+      title: "Evaluate the Experience",
       description:
         "Break down mechanics, lore, and performance. Your deep-dive reviews help define what makes a masterpiece and what falls short",
     },
@@ -79,13 +79,13 @@ const Banner = () => {
               className="h-full w-full bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <div className="flex h-full w-full items-center justify-center bg-black/20">
+              <div className="flex h-full w-full items-center justify-center">
                 <div className="px-4 text-center text-white">
                   <motion.h1
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="mb-6 text-5xl font-bold text-shadow-black text-shadow-sm md:text-7xl"
+                    className="mb-6 text-5xl font-bold text-shadow-lg/50 text-shadow-black md:text-7xl"
                   >
                     {slide.title}
                   </motion.h1>
@@ -93,7 +93,7 @@ const Banner = () => {
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="mx-auto mb-8 max-w-4xl text-xl text-shadow-black text-shadow-md md:text-2xl"
+                    className="mx-auto mb-8 max-w-4xl text-xl text-shadow-lg/50 text-shadow-black md:text-2xl"
                   >
                     {slide.description}
                   </motion.p>
@@ -103,8 +103,8 @@ const Banner = () => {
                     transition={{ delay: 0.6 }}
                   >
                     <Link to="/all-contests">
-                      <button className="btn btn-primary btn-lg">
-                        Explore Gallery
+                      <button className="btn bg-secondary-o btn-lg hover:bg-secondary-o/80 border-none duration-300">
+                        Explore ArtWork
                       </button>
                     </Link>
                   </motion.div>

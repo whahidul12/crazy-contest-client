@@ -22,7 +22,7 @@ const ContestCard = ({ contest }) => {
 
   return (
     <motion.div
-      className="card bg-base-100 shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+      className="card bg-card-light dark:bg-card-dark shadow-xl transition-shadow duration-300 hover:shadow-2xl"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -32,20 +32,24 @@ const ContestCard = ({ contest }) => {
         <div className="badge badge-primary absolute top-2 right-2">{type}</div>
       </figure>
       <div className="card-body p-5">
-        <h2 className="card-title mb-2 text-2xl">{name}</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <h2 className="card-title text-primary-dark dark:text-primary-light mb-2 text-2xl">
+          {name}
+        </h2>
+        <p className="text-primary-dark/70 dark:text-primary-light/70 text-sm">
           {description.slice(0, 100)}...
         </p>
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-secondary font-bold">Fee: ${price}</span>
-          <span className="text-sm font-medium">
+          <span className="text-secondary-c font-bold">
+            Fee: <span className="text-secondary">${price}</span>
+          </span>
+          <span className="text-secondary-c text-sm font-medium">
             Participants: {participantsCount}
           </span>
         </div>
         <div className="card-actions mt-4 justify-end">
           <button
             onClick={handleDetailsClick}
-            className="btn btn-primary btn-sm"
+            className="btn bg-secondary-o btn-sm border-none"
           >
             Details
           </button>

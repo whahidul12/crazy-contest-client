@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -10,8 +10,7 @@ import {
 } from "firebase/auth";
 import auth from "../Firebase/Firebase.config";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { AuthContext } from "./AuthContext";
-// Import the context from the new file
+const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -82,12 +81,10 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
   };
-
-  console.log("AuthProvider", loading);
-
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
 export default AuthProvider;
+export { AuthContext };

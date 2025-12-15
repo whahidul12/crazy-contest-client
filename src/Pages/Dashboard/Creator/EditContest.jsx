@@ -6,7 +6,6 @@ import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useParams, useNavigate } from "react-router-dom";
-// import moment from "moment";
 
 const contestTypes = [
   "Image Design",
@@ -25,7 +24,6 @@ const EditContest = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     setValue,
   } = useForm();
   const [deadline, setDeadline] = useState(null);
