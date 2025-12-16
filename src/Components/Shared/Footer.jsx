@@ -2,6 +2,8 @@ import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 // --- Configuration for Framer Motion Variants ---
 
@@ -68,8 +70,15 @@ const Footer = () => {
       className="bg-secondary-c w-full overflow-hidden py-8 text-gray-400 shadow-2xl"
     >
       <div className="mx-auto flex max-w-6xl flex-col items-center px-4 sm:px-6 lg:px-8">
+        <Link
+          to="/"
+          className="text-primary-dark dark:text-primary-light flex items-center justify-center text-xl font-bold"
+        >
+          Crazy Contest
+          <img src={logo} alt="crazy contest logo" className="-ml-2 w-10" />
+        </Link>
         {/* Social Icons Section */}
-        <div className="mb-6 flex space-x-6">
+        <div className="my-6 flex space-x-6">
           {socialLinks.map((link) => {
             const Icon = link.icon;
             return (

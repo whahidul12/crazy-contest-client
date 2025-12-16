@@ -33,7 +33,7 @@ const DashboardLayout = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content bg-primary-dark flex min-h-screen flex-col p-8">
         {/* Page content here */}
-        <div>
+        <div className="sticky top-4 z-50">
           <label
             htmlFor="my-drawer-2"
             className="btn bg-secondary-c drawer-button float-right mb-4 w-fit lg:hidden"
