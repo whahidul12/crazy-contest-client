@@ -23,7 +23,7 @@ const PaymentSuccess = () => {
   };
 
   return (
-    <div className="bg-base-100 flex min-h-screen flex-col items-center justify-center p-4">
+    <div className="bg-primary-light dark:bg-primary-dark flex min-h-screen flex-col items-center justify-center p-4">
       <motion.div
         className="w-full max-w-lg rounded-xl bg-white p-10 text-center shadow-2xl"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -49,7 +49,7 @@ const PaymentSuccess = () => {
         </div>
 
         <button
-          className="btn btn-primary btn-lg w-full"
+          className="btn bg-secondary-o btn-lg w-full border-none"
           onClick={handleReturnClick}
         >
           Go Back to Contest Details

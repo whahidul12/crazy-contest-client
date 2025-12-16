@@ -86,7 +86,7 @@ const Banner = () => {
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="mb-6 text-5xl font-bold text-shadow-lg/50 text-shadow-black md:text-7xl"
+                    className="text-shadow-secondary-o text-secondary-c mb-6 text-5xl font-bold text-shadow-lg/50 md:text-7xl"
                   >
                     {slide.title}
                   </motion.h1>
@@ -94,7 +94,7 @@ const Banner = () => {
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="mx-auto mb-8 max-w-4xl text-xl text-shadow-lg/50 text-shadow-black md:text-2xl"
+                    className="text-shadow-secondary-c mx-auto mb-8 max-w-4xl text-xl text-shadow-lg/50 md:text-2xl"
                   >
                     {slide.description}
                   </motion.p>

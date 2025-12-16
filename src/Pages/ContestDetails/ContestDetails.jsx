@@ -190,13 +190,13 @@ const ContestDetails = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="bg-primary-light dark:bg-primary-dark mx-auto -mt-20 px-4 py-10 pt-28">
       <Helmet>
         <title>Crazy Contest | {contest.name}</title>
       </Helmet>
 
       <motion.div
-        className="bg-base-100 rounded-xl p-6 shadow-2xl lg:p-10"
+        className="bg-card-light dark:bg-card-dark text-primary-dark dark:text-primary-light rounded-xl p-6 shadow-2xl lg:p-10"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -264,19 +264,19 @@ const ContestDetails = () => {
             <h2 className="mt-8 mb-4 flex items-center gap-2 text-3xl font-bold">
               <FaFileAlt /> Task Details
             </h2>
-            <div className="bg-base-200 rounded-lg border border-dashed border-gray-400 p-4">
+            <div className="bg-secondary-c/50 rounded-lg border border-dashed border-gray-400 p-4">
               <p className="whitespace-pre-line">{contest.taskInstruction}</p>
             </div>
           </div>
 
           {/* Right Column: Actions */}
-          <div className="bg-base-200 sticky top-20 h-fit rounded-lg p-6 shadow-inner lg:col-span-1">
+          <div className="bg-secondary-c/50 sticky top-20 h-fit rounded-lg p-6 shadow-inner lg:col-span-1">
             <h2 className="mb-4 border-b pb-2 text-2xl font-bold">Actions</h2>
 
             {/* 1. Register Button */}
             <button
               onClick={handleRegisterClick}
-              className="btn btn-primary btn-block mb-4 text-lg"
+              className="btn bg-secondary-o btn-block mb-4 border-none text-lg"
               disabled={isContestEnded || hasRegistered}
             >
               {isContestEnded
@@ -300,7 +300,7 @@ const ContestDetails = () => {
                   }
                   setIsSubmissionModalOpen(true);
                 }}
-                className="btn btn-secondary btn-block text-lg"
+                className={`btn ${hasSubmitted ? "bg-secondary-o/50" : "bg-secondary-o"} btn-block border-none text-lg`}
                 // *** IMPORTANT: Add the disabled attribute here ***
                 disabled={hasSubmitted}
               >
@@ -315,7 +315,7 @@ const ContestDetails = () => {
               </p>
             )}
 
-            <div className="mt-8 text-center text-sm text-gray-500">
+            <div className="mt-8 text-center text-sm">
               <p>Contest Created by: {contest.creatorName || "Unknown"}</p>
               <p>
                 Created on: {moment(contest.creationDate).format("MMM D, YYYY")}

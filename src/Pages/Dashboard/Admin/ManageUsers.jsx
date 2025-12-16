@@ -71,12 +71,14 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="text-primary-dark dark:text-primary-light">
-      <h2 className="mb-6 text-3xl font-bold">Manage Users ({users.length})</h2>
+    <div className="text-primary-dark">
+      <h2 className="text-primary-light mb-6 text-3xl font-bold">
+        Manage Users ({users.length})
+      </h2>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
-            <tr className="text-primary-dark dark:text-primary-light bg-secondary-o/50">
+            <tr className="text-primary-dark bg-secondary-o/50">
               <th className="">#</th>
               <th>Name</th>
               <th>Email</th>
@@ -84,7 +86,7 @@ const ManageUsers = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-primary-light">
             {users.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>

@@ -125,7 +125,7 @@ const AllContests = () => {
     );
   };
   return (
-    <div className="tabs tabs-box bg-primary-light dark:bg-primary-dark -mt-20">
+    <div className="tabs tabs-box bg-primary-light dark:bg-primary-dark -mt-20 pt-8">
       {/* ======================= ONGOING CONTESTS TAB ======================= */}
       <input
         type="radio"

@@ -14,9 +14,8 @@ const SubmittedTasks = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [searchParams] = useSearchParams();
-  const contestIdFilter = searchParams.get("contestId"); // Use contestId from URL query
+  const contestIdFilter = searchParams.get("contestId");
 
-  // Fetch submissions for contests created by the user, filtered by contestId if present
   const {
     data: submissions = [],
     isLoading,
@@ -24,7 +23,6 @@ const SubmittedTasks = () => {
   } = useQuery({
     queryKey: ["submittedTasks", user?.email, contestIdFilter],
     queryFn: async () => {
-      // Backend should handle filtering by creator email AND optional contestId
       const res = await axiosSecure.get(`/submissions/creator/${user.email}`, {
         params: { contestId: contestIdFilter },
       });
@@ -32,7 +30,6 @@ const SubmittedTasks = () => {
     },
   });
 
-  // Fetch contests to check for winner status and deadline
   const { data: contests = [] } = useQuery({
     queryKey: ["creatorContests", user?.email],
     queryFn: async () => {
@@ -41,7 +38,6 @@ const SubmittedTasks = () => {
     },
   });
 
-  // Helper function to check if winner is already declared or deadline passed
   const getContestStatus = (id) => {
     const contest = contests.find((c) => c._id === id);
     if (!contest) return { status: "Contest Not Found", canDeclare: false };
@@ -80,7 +76,7 @@ const SubmittedTasks = () => {
       if (result.isConfirmed) {
         const winnerInfo = {
           winnerEmail: submission.participantEmail,
-          winnerName: submission.participantName, // Assuming you add participantName during submission
+          winnerName: submission.participantName,
           submissionId: submission._id,
         };
 
@@ -88,7 +84,7 @@ const SubmittedTasks = () => {
           .put(`/contests/declare-winner/${submission.contestId}`, winnerInfo)
           .then((res) => {
             if (res.data.modifiedCount > 0) {
-              refetch(); // Refetch submissions to update view
+              refetch();
               Swal.fire(
                 "Winner Declared!",
                 "The winner has been successfully recorded.",
@@ -110,8 +106,6 @@ const SubmittedTasks = () => {
     return <span className="loading loading-spinner loading-lg"></span>;
 
   const handleTaskSubmission = () => {
-    // Handle submission logic (POST to backend)
-
     axiosSecure
       .get("/submissions")
       .then((res) => {
@@ -124,7 +118,6 @@ const SubmittedTasks = () => {
             timer: 1500,
           });
           setIsSubmissionModalOpen(false);
-          // Optional: You might want to refetch the contest details to show the submission status if tracked there
         }
       })
       .catch((err) => {
@@ -133,7 +126,6 @@ const SubmittedTasks = () => {
       });
   };
 
-  console.log("iiiiiiiiiiiiiiii", submissions);
   return (
     <div>
       <h2 className="mb-6 text-3xl font-bold">
@@ -184,7 +176,7 @@ const SubmittedTasks = () => {
                     </button>
                   </td>
                   <td>{moment(sub.submissionTime).format("MMM Do YYYY")}</td>
-                  <td>{moment(sub.contestDeadline).format("MMM Do YYYY")}</td>
+                  <td>{moment(sub.deadline).format("MMM Do YYYY")}</td>
                   <td>
                     <button
                       onClick={() => handleDeclareWinner(sub)}

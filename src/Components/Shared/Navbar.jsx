@@ -76,11 +76,15 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-primary-light/50 dark:bg-primary-dark/50 sticky top-0 z-50 shadow-sm backdrop-blur-xs">
+    <div className="bg-primary-light/50 dark:bg-primary-dark/50 dark:shadow-primary-light/50 sticky top-0 z-50 shadow-lg backdrop-blur-xs">
       <div className="navbar mx-auto max-w-screen-2xl">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost text-primary-dark dark:text-primary-light lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

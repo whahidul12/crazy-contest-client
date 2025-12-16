@@ -72,13 +72,16 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-primary-light dark:bg-primary-dark min-h-screen">
       <Helmet>
         <title>Crazy Contest | Login</title>
       </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+        <div className="card bg-card-light dark:bg-card-dark w-full max-w-sm shrink-0 shadow-2xl">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-body text-primary-dark dark:text-primary-light"
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -86,7 +89,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered bg-secondary-o/30 dark:bg-primary-dark/50"
                 {...register("email", { required: true })}
               />
               {errors.email && (
@@ -100,7 +103,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered bg-secondary-o/30 dark:bg-primary-dark/50"
                 {...register("password", { required: true })}
               />
               {errors.password && (
@@ -108,27 +111,34 @@ const Login = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn bg-secondary-o border-none">Login</button>
             </div>
           </form>
-          <div className="px-8 pb-4">
+          <div className="text-primary-dark dark:text-primary-light px-8 pb-4">
             <p className="mb-2 text-center">Or login with</p>
             <button
               onClick={handleGoogleSignIn}
-              className="btn btn-outline border-primary w-full text-lg"
+              className="btn bg-primary-light hover:bg-primary-dark hover:text-primary-light btn-outline dark:text-primary-dark dark:hover:text-primary-light border-primary w-full text-lg"
             >
               <FcGoogle /> Google
             </button>
             <p className="mt-4 text-center">
               New here?{" "}
-              <Link to="/register" className="text-primary font-bold">
+              <Link
+                to="/register"
+                className="text-primary hover:text-secondary-c font-bold hover:underline"
+              >
                 Create an account
               </Link>
             </p>
           </div>
         </div>
         <div className="hidden text-center lg:block lg:text-left">
-          <img src={login_img} alt="log_in_frog" className="max-h-[600px]" />
+          <img
+            src={login_img}
+            alt="log_in_frog"
+            className="max-h-[550px] rounded-2xl"
+          />
         </div>
       </div>
     </div>

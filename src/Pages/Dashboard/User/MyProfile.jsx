@@ -61,7 +61,7 @@ const MyProfile = () => {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       {/* Profile Edit Section */}
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-card-dark shadow-xl">
         <div className="card-body">
           <h2 className="card-title mb-4 text-2xl">Edit Profile</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -108,7 +108,7 @@ const MyProfile = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-card-dark shadow-xl">
         <div className="card-body flex flex-col items-center justify-center">
           <h2 className="card-title mb-4 text-2xl">Contest Statistics</h2>
           <div className="h-64 w-full">

@@ -95,14 +95,14 @@ const ManageContests = () => {
   };
 
   return (
-    <div className="text-primary-dark dark:text-primary-light">
-      <h2 className="mb-6 text-3xl font-bold">
+    <div className="text-primary-dark">
+      <h2 className="text-primary-light mb-6 text-3xl font-bold">
         Manage Contests ({totalCount})
       </h2>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
-            <tr className="text-primary-dark dark:text-primary-light bg-secondary-o/50">
+            <tr className="text-primary-dark bg-secondary-o/50">
               <th>#</th>
               <th>Name</th>
               <th>Creator</th>
@@ -112,7 +112,7 @@ const ManageContests = () => {
               <th className="text-center">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-primary-light">
             {contests.map((contest, index) => (
               <tr key={contest._id}>
                 <th>{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</th>
