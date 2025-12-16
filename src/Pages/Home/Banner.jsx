@@ -7,6 +7,7 @@ import bannerTwo from "../../assets/banner-2.jpg";
 import bannerThree from "../../assets/banner-3.jpg";
 import bannerFour from "../../assets/banner-4.jpg";
 import bannerFive from "../../assets/banner-5.jpg";
+import bannerSix from "../../assets/banner-6.jpg";
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -49,7 +50,7 @@ const Banner = () => {
     },
     {
       id: 1,
-      image: bannerFive,
+      image: bannerSix,
       title: "From Vision to Venture",
       description:
         "Present your roadmap for change. We’re looking for the next generation of sustainable, scalable, and socially impactful business models.",

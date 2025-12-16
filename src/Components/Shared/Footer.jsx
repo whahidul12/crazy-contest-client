@@ -40,18 +40,22 @@ const Footer = () => {
 
   // Social Media Links Data
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/yourprofile", label: "GitHub" },
+    { icon: FaGithub, href: "https://github.com/whahidul12", label: "GitHub" },
     {
       icon: FaLinkedin,
-      href: "https://linkedin.com/in/yourprofile",
+      href: "https://linkedin.com/in/whahidul12",
       label: "LinkedIn",
     },
     {
       icon: FaTwitter,
-      href: "https://twitter.com/yourprofile",
+      href: "https://twitter.com/whahidul12",
       label: "Twitter",
     },
-    { icon: FaEnvelope, href: "mailto:youremail@example.com", label: "Email" },
+    {
+      icon: FaEnvelope,
+      href: "mailto:whahidul.islam.tech@gmail.com",
+      label: "Email",
+    },
   ];
 
   return (

@@ -66,7 +66,10 @@ const PopularContests = () => {
         ))}
       </div>
       <div className="mt-10 text-center">
-        <Link to="/all-contests" className="btn btn-outline btn-wide">
+        <Link
+          to="/all-contests"
+          className="btn bg-secondary-o btn-wide border-none"
+        >
           Show All
         </Link>
       </div>
