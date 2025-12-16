@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="bg-primary-light dark:bg-primary-dark -mt-20">
       <Helmet>
-        <title>ContestHub | Home</title>
+        <title>Crazy Contest | Home</title>
       </Helmet>
       <Banner />
       <div className="container mx-auto">

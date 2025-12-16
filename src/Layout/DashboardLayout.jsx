@@ -28,7 +28,7 @@ const DashboardLayout = () => {
   return (
     <div className="drawer lg:drawer-open">
       <Helmet>
-        <title>ContestHub | Dashboard</title>
+        <title>Crazy Contest | Dashboard</title>
       </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content bg-primary-dark flex min-h-screen flex-col p-8">

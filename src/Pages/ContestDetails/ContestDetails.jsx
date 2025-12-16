@@ -192,7 +192,7 @@ const ContestDetails = () => {
   return (
     <div className="container mx-auto px-4 py-10">
       <Helmet>
-        <title>ContestHub | {contest.name}</title>
+        <title>Crazy Contest | {contest.name}</title>
       </Helmet>
 
       <motion.div

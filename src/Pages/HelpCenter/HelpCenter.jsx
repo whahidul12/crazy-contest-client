@@ -10,7 +10,7 @@ const HelpCenter = () => {
   return (
     <div className="bg-primary-light dark:bg-primary-dark mx-auto -mt-20 px-4 pt-24 pb-10">
       <Helmet>
-        <title>ContestHub | Help Center</title>
+        <title>Crazy Contest | Help Center</title>
       </Helmet>
       <h1 className="text-secondary-c dark:text-primary-light mb-10 flex items-center justify-center gap-3 text-center text-4xl font-bold">
         <FaQuestionCircle /> ContestHub Help Center
@@ -75,7 +75,7 @@ const HelpCenter = () => {
               <FaEnvelope className="text-2xl" />
               <div>
                 <h3 className="font-bold">General Inquiries</h3>
-                <p className="text-sm">support@contesthub.com</p>
+                <p className="text-sm">support@crazycontest.com</p>
               </div>
             </div>
             <div className="alert alert-success shadow-lg">

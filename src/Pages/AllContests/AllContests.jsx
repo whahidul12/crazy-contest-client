@@ -136,7 +136,7 @@ const AllContests = () => {
       />
       <div className="tab-content container mx-auto px-4 py-10">
         <Helmet>
-          <title>ContestHub | All Ongoing Contests</title>
+          <title>Crazy Contest | All Ongoing Contests</title>
         </Helmet>
         <h1 className="text-secondary-c dark:text-primary-light text-center text-3xl font-bold sm:text-4xl">
           Explore All Ongoing Contests
@@ -215,7 +215,7 @@ const AllContests = () => {
       />
       <div className="tab-content container mx-auto px-4 py-10">
         <Helmet>
-          <title>ContestHub | All Ended Contests</title>
+          <title>Crazy Contest | All Ended Contests</title>
         </Helmet>
         <h1 className="text-secondary-c dark:text-primary-light mb-10 text-center text-4xl font-bold">
           Explore All Ended Contests

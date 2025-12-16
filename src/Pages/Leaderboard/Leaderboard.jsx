@@ -23,7 +23,7 @@ const Leaderboard = () => {
   return (
     <div className="bg-primary-light dark:bg-primary-dark mx-auto -mt-20 min-h-screen px-4 py-10 pt-24">
       <Helmet>
-        <title>ContestHub | Leaderboard</title>
+        <title>Crazy Contest | Leaderboard</title>
       </Helmet>
       <h1 className="text-primary mb-10 flex items-center justify-center gap-4 text-center text-5xl font-extrabold">
         <FaCrown className="text-yellow-500" />{" "}

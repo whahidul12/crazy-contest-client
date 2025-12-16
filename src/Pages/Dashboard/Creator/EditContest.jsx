@@ -112,7 +112,7 @@ const EditContest = () => {
   return (
     <div>
       <Helmet>
-        <title>ContestHub | Edit Contest</title>
+        <title>Crazy Contest | Edit Contest</title>
       </Helmet>
       <h2 className="mb-6 text-3xl font-bold">Edit Contest: {contest.name}</h2>
 

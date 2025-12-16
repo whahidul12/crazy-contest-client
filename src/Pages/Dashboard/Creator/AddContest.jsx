@@ -72,7 +72,7 @@ const AddContest = () => {
   return (
     <div>
       <Helmet>
-        <title>ContestHub | Add Contest</title>
+        <title>Crazy Contest | Add Contest</title>
       </Helmet>
       <h2 className="mb-6 text-3xl font-bold">Add New Contest</h2>
 
