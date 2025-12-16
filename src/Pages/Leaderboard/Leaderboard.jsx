@@ -52,7 +52,7 @@ const Leaderboard = () => {
                     : ""
                 }
               >
-                <td className="text-2xl font-bold">
+                <td className="text-primary-dark dark:text-primary-light text-2xl font-bold">
                   {index === 0 ? (
                     <FaTrophy className="text-yellow-500" />
                   ) : index === 1 ? (
@@ -76,8 +76,12 @@ const Leaderboard = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{user.name}</div>
-                      <div className="text-sm opacity-50">{user.email}</div>
+                      <div className="text-primary-dark dark:text-primary-light font-bold">
+                        {user.name}
+                      </div>
+                      <div className="text-primary-dark dark:text-primary-light text-sm font-bold opacity-50">
+                        {user.email}
+                      </div>
                     </div>
                   </div>
                 </td>
