@@ -17,6 +17,24 @@ const PopularContests = () => {
     },
   });
 
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+  };
+
   if (isLoading)
     return (
       <div className="py-10 text-center">
@@ -29,13 +47,21 @@ const PopularContests = () => {
       <h2 className="text-secondary-c dark:text-primary-light mb-10 text-center text-3xl font-bold sm:text-4xl">
         Popular Contests
       </h2>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {contests.map((contest) => (
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            key={contest._id}
-            className="card bg-card-light dark:bg-card-dark border border-gray-100 shadow-xl dark:border-gray-700"
+            variants={cardVariants}
+            whileHover={{
+              y: -8,
+              scale: 1.02,
+              transition: { type: "spring", stiffness: 0, damping: 20 },
+            }}
+            className="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800"
           >
+            {/* Hover Glow Effect */}
+            <div
+              className={`to-green-60 absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20`}
+            ></div>
             <figure>
               <img
                 src={contest.image}

@@ -1,28 +1,35 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
 import heroImg from "../../assets/hero-img.jpg";
 
 const Banner = () => {
   return (
-    <div className="h-screen bg-white text-slate-900 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
+    <div className="min-h-screen bg-white text-slate-900 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
+      {/* Custom keyframe animation for infinite scrolling */}
+      <style>
+        {`
+          @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .infinite-scroll {
+            animation: infiniteScroll 20s linear infinite;
+          }
+        `}
+      </style>
       <main className="mx-auto max-w-7xl px-6 pt-12 pb-24 md:pt-24 md:pb-32">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div className="flex flex-col space-y-8">
             <div className="space-y-4">
-              <h1 className="text-5xl leading-[1.1] font-extrabold tracking-tight md:text-7xl">
-                Build something <br />
-                <span className="text-slate-900 dark:text-white">
-                  beautiful.
-                </span>
+              <h1 className="max-w-lg text-4xl leading-[1.1] font-extrabold tracking-tight md:text-6xl">
+                Unleash Your Skill, Claim Your Prize.
               </h1>
-              <p className="max-w-lg text-xl leading-relaxed text-slate-600 md:text-2xl dark:text-slate-400">
-                Empower your team with tools designed for clarity and focus. All
-                your work in one place.
+              <p className="max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-400">
+                The ultimate proving ground for coders, creatives, and
+                innovators. Join high-stakes global challenges and turn talent
+                into reward.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95">
+              <button className="bg-secondary-o rounded-lg px-8 py-4 text-lg font-bold text-white transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95">
                 Get started for free
               </button>
               <button className="rounded-lg bg-slate-100 px-8 py-4 text-lg font-bold text-slate-900 transition-all hover:scale-105 hover:bg-slate-200 active:scale-95 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
@@ -34,54 +41,91 @@ const Banner = () => {
                 Trusted by teams at
               </p>
               <div className="overflow-hidden">
-                <Swiper
-                  modules={[Autoplay]}
-                  spaceBetween={32}
-                  slidesPerView="auto"
-                  loop={true}
-                  autoplay={{
-                    delay: 0,
-                    disableOnInteraction: false,
-                  }}
-                  speed={5000}
-                  className="!overflow-visible"
-                >
-                  <SwiperSlide className="!w-auto">
-                    <img
-                      alt="Netflix logo"
-                      className="h-5 flex-shrink-0 opacity-60 grayscale"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuATvq_lN-rFGC_-zpJe6sa5RS-lP2rhUSzn0vygxMZezLnIorvqiuQQ2WlTviKsqWAS82TqwcQaK34ew3jmHK_Q7uAY82RI5-RAwdfZRyMiAf9hvgSlVEMyFIiuZN2lleVXQH8_2UmLyafP4KWixoWOC-BwK8KR1QXnyIHkD9J5YXEo52SresBw-BFAiEbc2l5HWJPXtWwBBg3wtPKDPG_gJAR7e1FdImk1h2jnu2kSHpcaNk1y-i0wZdoTjZ9u1Z3ZFuEgL69NmSpZ"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide className="!w-auto">
-                    <img
-                      alt="Meta logo"
-                      className="h-6 flex-shrink-0 opacity-60 grayscale"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN7q7HlpeB9k3KnH4rQLuDjLJMOghaguZevfsLP18opMpNGmuoK9EguTx1k0Oy8fh9vu3B4Vpq4bo0iwMfEK0qnS44zWgBZ7aUJs6n293K8PEtLmahIY3RUMn23StVVyplqYigpNQuk0Z_5bwnmBxLgM7aRIwj51jgKaduBuRj9C6ibIieilYao87USBHqi2WXzgcw1FLHJcfoDI9dJbrGnO8yPYNM2pfGk69I4BOvWVAejgGZ0BvPjzQ_ZYLWVPOv4XlFTmD7T_ql"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide className="!w-auto">
-                    <img
-                      alt="Figma logo"
-                      className="h-6 flex-shrink-0 opacity-60 grayscale"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ6TGqYnLWmHpYc8R-hRrCqwKnYPKQHkjFFKHtR0YmzDHlncQJ8pZ1NqeKZnk6jiYVik4c_AYiY4-eubJZqwbANoWPWh2XDgjQGuZir-MdpJfTz6GfzpPCZF-AxgijwUQ2NWIxmsu2iB0aNDxLuEgHJtXH8CgKu1SCWbsK5oNdhhSHLWXOnrEvDKxYMUyY9CuKqFCb2o-T4smXiI1c6HMbAFXLA-cw9CirDsd99J7ExGEbUEPsixlZhYtuqTk2pJySB7b3ih9gg7Kb"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide className="!w-auto">
-                    <img
-                      alt="Loom logo"
-                      className="h-6 flex-shrink-0 opacity-60 grayscale"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI9yi0evYYm0JYjYaJ6-7vLVzngu87MYtJLaOYF_W7iZOHW1_C3wEZ4PQTC0nM2req_5vTrXktxLwNTDB7PUtzGZbjdbwASr1e6YhIPAWZAGcJB5Hhfa7cNcluyeu2prUt0C6FpTwJUzUKwZw3QCHyzkI8UZvmqlzghL7zFLvc8-JkpmN7JurHc3i_VyjEWklz8OY8LHBoJsGrMVZdvVJJk6tiKahN_5yOsnbRIJpzZhoy9gBkVzJ7JMZHm1vaNZRJ6ic2CVi91b8f"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide className="!w-auto">
-                    <img
-                      alt="Notion logo"
-                      className="h-6 flex-shrink-0 opacity-60 grayscale"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeEaiFAIgPJOt6-yJrhxirqD3fSi4PrqWkeRqsOCTF89wwoRFMPmeGnykWZXezP1yM2F3bHcYdX2WJKYO3D1AODQHVfnJGXiyftZg_Wzqr1ox15_H88BLlEtffCWDH-dZIrJjfs7vCbYBQUMI_3BgCB9ZXJBIJ2X8dEUkbcTa_mu-TRMtR7xU1GgsSU3goLnMNaXRjonR5XrxwLSYja3pOdq4vU3WlHQjuxXrFwXRpBgbtDEtjQ06-XtTY_RLG8hubDNF4YAbC4bkY"
-                    />
-                  </SwiperSlide>
-                </Swiper>
+                <div className="infinite-scroll flex w-max items-center gap-x-8">
+                  {/* First set of logos */}
+                  <img
+                    alt="Netflix logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                  />
+                  <img
+                    alt="Google logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                  />
+                  <img
+                    alt="Microsoft logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                  />
+                  <img
+                    alt="Apple logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                  />
+                  <img
+                    alt="Amazon logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                  />
+                  <img
+                    alt="Meta logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg"
+                  />
+                  <img
+                    alt="Tesla logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Tesla_T_symbol.svg"
+                  />
+                  <img
+                    alt="Spotify logo"
+                    className="h-8 shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                  />
+
+                  {/* Duplicate set for seamless loop */}
+                  <img
+                    alt="Netflix logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                  />
+                  <img
+                    alt="Google logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                  />
+                  <img
+                    alt="Microsoft logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                  />
+                  <img
+                    alt="Apple logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                  />
+                  <img
+                    alt="Amazon logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                  />
+                  <img
+                    alt="Meta logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg"
+                  />
+                  <img
+                    alt="Tesla logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Tesla_T_symbol.svg"
+                  />
+                  <img
+                    alt="Spotify logo"
+                    className="h-8 flex-shrink-0 opacity-60 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                  />
+                </div>
               </div>
             </div>
           </div>

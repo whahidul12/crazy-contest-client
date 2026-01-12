@@ -9,7 +9,7 @@ import Categories from "../../Components/HomeComponents/Categories";
 import Testimonials from "../../Components/HomeComponents/Testimonials";
 import FaqSection from "../../Components/HomeComponents/FaqSection";
 import Newsletter from "../../Components/HomeComponents/Newsletter";
-import LatestNews from "../../Components/HomeComponents/LatestNews";
+import WhyChooseUs from "../../Components/HomeComponents/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -49,8 +49,8 @@ const Home = () => {
         {/* 7. Testimonials (User Feedback) */}
         <Testimonials />
 
-        {/* 8. Latest News / Blog */}
-        <LatestNews />
+        {/* 8. Why Choose Crazy Contest */}
+        <WhyChooseUs />
 
         {/* 9. FAQ Section */}
         <FaqSection />

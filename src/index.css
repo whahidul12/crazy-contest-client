@@ -14,7 +14,133 @@ body {
     --color-primary-light: #FFF9ED;
     --color-primary-dark: #13130D;
     --color-secondary-c: #5A684E;
-    --color-secondary-o: #FA853D;
+    --color-secondary-o: #016257;
     --color-card-light: #FFE6CC;
     --color-card-dark: #262626;
+}
+
+/* Enhanced Design System Styles */
+
+/* Consistent Card Styling */
+.card-enhanced {
+    @apply rounded-3xl border border-gray-200 bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800;
+}
+
+/* Gradient Button Styles */
+.btn-gradient-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl;
+}
+
+.btn-gradient-secondary {
+    @apply inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-red-500 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl;
+}
+
+/* Consistent Section Spacing */
+.section-padding {
+    @apply py-20;
+}
+
+.section-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Background Blur Elements */
+.bg-blur-element {
+    @apply absolute rounded-full blur-3xl;
+}
+
+/* Consistent Typography */
+.heading-primary {
+    @apply text-4xl font-bold text-gray-900 dark:text-white md:text-5xl;
+}
+
+.heading-secondary {
+    @apply text-3xl font-bold text-gray-900 dark:text-white md:text-4xl;
+}
+
+.text-description {
+    @apply text-lg text-gray-600 dark:text-gray-300;
+}
+
+/* Icon Container Styles */
+.icon-container {
+    @apply inline-flex items-center justify-center rounded-2xl shadow-lg;
+}
+
+/* Hover Effects */
+.hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:scale-105;
+}
+
+.hover-glow {
+    @apply transition-all duration-300 hover:shadow-2xl;
+}
+
+/* Swiper Pagination Customization */
+.swiper-pagination-bullet {
+    @apply !bg-gray-300 dark:!bg-gray-600;
+}
+
+.swiper-pagination-bullet-active {
+    @apply !bg-blue-600;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+}
+
+/* Loading Animation */
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
+}
+
+.gradient-text-primary {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.gradient-text-secondary {
+    @apply bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent;
+}
+
+/* Focus States */
+.focus-ring {
+    @apply focus:outline-none focus:ring-4 focus:ring-blue-500/50;
+}
+
+/* Backdrop Blur */
+.backdrop-blur-custom {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }

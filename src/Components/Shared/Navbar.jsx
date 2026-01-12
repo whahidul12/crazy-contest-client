@@ -28,7 +28,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "bg-secondary-c/50 text-primary-dark dark:text-primary-light border-secondary-o border-b-2 text-lg font-bold"
+              ? "bg-secondary-o/30 text-secondary-o border-secondary-o border-b-2 text-lg font-bold"
               : "text-primary-dark dark:text-primary-light text-lg"
           }
         >
@@ -40,7 +40,7 @@ const Navbar = () => {
           to="/all-contests"
           className={({ isActive }) =>
             isActive
-              ? "bg-secondary-c/50 text-primary-dark dark:text-primary-light border-secondary-o border-b-2 text-lg font-bold"
+              ? "bg-secondary-o/30 text-secondary-o border-secondary-o border-b-2 text-lg font-bold"
               : "text-primary-dark dark:text-primary-light text-lg"
           }
         >
@@ -52,7 +52,7 @@ const Navbar = () => {
           to="/leaderboard"
           className={({ isActive }) =>
             isActive
-              ? "bg-secondary-c/50 text-primary-dark dark:text-primary-light border-secondary-o border-b-2 text-lg font-bold"
+              ? "bg-secondary-o/30 text-secondary-o border-secondary-o border-b-2 text-lg font-bold"
               : "text-primary-dark dark:text-primary-light text-lg"
           }
         >
@@ -65,7 +65,7 @@ const Navbar = () => {
           to="/help-center"
           className={({ isActive }) =>
             isActive
-              ? "bg-secondary-c/50 text-primary-dark dark:text-primary-light border-secondary-o border-b-2 text-lg font-bold"
+              ? "bg-secondary-o/30 text-secondary-o border-secondary-o border-b-2 text-lg font-bold"
               : "text-primary-dark dark:text-primary-light text-lg"
           }
         >
