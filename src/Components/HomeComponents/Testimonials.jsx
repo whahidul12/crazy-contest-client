@@ -111,7 +111,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="relative overflow-hidden py-20">
+    <section className="relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 h-40 w-40 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-3xl"></div>

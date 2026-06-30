@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaTrophy, FaDollarSign, FaUsers, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import trophy from "../../assets/trophy.jpg";
 
 const WinnerSection = () => {
   const stats = [
@@ -10,11 +12,11 @@ const WinnerSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-20">
+    <section className="relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 h-40 w-40 rounded-full bg-gradient-to-r from-yellow-400/20 to-orange-500/20 blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 h-32 w-32 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl"></div>
+        <div className="absolute right-10 bottom-10 h-32 w-32 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl"></div>
         <div className="absolute top-1/2 left-1/4 h-24 w-24 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-3xl"></div>
       </div>
 
@@ -40,19 +42,20 @@ const WinnerSection = () => {
                 Join the Winners Circle
               </motion.div>
 
-              <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+              <h1 className="text-4xl leading-tight font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                 Become the Next{" "}
                 <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
                   Champion
                 </span>
               </h1>
 
-              <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 md:text-xl">
+              <p className="text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
                 Join a thriving community where talent meets opportunity. Over{" "}
                 <span className="font-bold text-orange-600 dark:text-orange-400">
                   $100,000
                 </span>{" "}
-                distributed in prizes this month alone. Showcase your skills, compete with the best, and turn your creativity into cash.
+                distributed in prizes this month alone. Showcase your skills,
+                compete with the best, and turn your creativity into cash.
               </p>
             </div>
 
@@ -88,22 +91,20 @@ const WinnerSection = () => {
               viewport={{ once: true }}
               className="flex flex-col gap-4 sm:flex-row"
             >
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+              <Link
+                to={"/all-contests"}
                 className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl"
               >
                 Start Competing
                 <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-              </motion.button>
-              
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+              </Link>
+
+              <Link
+                to={"/leaderboard"}
                 className="inline-flex items-center justify-center rounded-xl border-2 border-gray-300 bg-white px-8 py-4 text-lg font-bold text-gray-700 transition-all duration-300 hover:border-orange-500 hover:text-orange-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-orange-400 dark:hover:text-orange-400"
               >
                 View Winners
-              </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -123,7 +124,7 @@ const WinnerSection = () => {
                 className="relative overflow-hidden rounded-3xl shadow-2xl"
               >
                 <img
-                  src="https://img.freepik.com/free-vector/winners-concept-illustration_114360-128.jpg"
+                  src={trophy}
                   alt="Winners celebration"
                   className="h-full w-full object-cover"
                 />
@@ -136,7 +137,7 @@ const WinnerSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
                 viewport={{ once: true }}
-                className="absolute -top-6 -left-6 rounded-2xl border border-white/20 bg-white/90 p-4 shadow-xl backdrop-blur-sm dark:bg-gray-800/90"
+                className="absolute -top-6 -left-6 animate-bounce rounded-2xl border border-white/20 bg-white/90 p-4 shadow-xl backdrop-blur-sm [animation-duration:4s] dark:bg-gray-800/90"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white">
@@ -158,7 +159,7 @@ const WinnerSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, type: "spring", stiffness: 200 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-6 -right-6 rounded-2xl border border-white/20 bg-white/90 p-4 shadow-xl backdrop-blur-sm dark:bg-gray-800/90"
+                className="absolute -right-6 -bottom-6 animate-bounce rounded-2xl border border-white/20 bg-white/90 p-4 shadow-xl backdrop-blur-sm [animation-duration:3.5s] dark:bg-gray-800/90"
               >
                 <div className="flex flex-col items-center gap-2">
                   <div className="flex items-center gap-1">

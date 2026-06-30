@@ -22,7 +22,7 @@ Crazy Contest is a modern, full-stack web application designed to connect creati
 8.  **Responsive Design & Theming:** Built with a **fully responsive UI** (Mobile, Tablet, Desktop) using **React** and **DaisyUI/Tailwind CSS**. Includes a persistent **Dark/Light Theme Toggle**.
 9.  **Advanced Form Management:** Utilizes **React Hook Form** for all forms (Login, Registration, Contest Creation, Profile Update), ensuring robust validation and performance.
 10. **Role-Specific Dashboards:** Custom user dashboards displaying participated contests, winning history, and a profile with a dynamic **Win Percentage** chart (Won/Participated).
-11. **Extra Pages:** Includes a dedicated **Leaderboard Page** and a static **Extra Section** page, as per challenge requirements.
+11. **Extra Pages:** Includes a dedicated **Leaderboard Page** and a static **Extra Section** page, as per challenge requirements..
 
 ---
 

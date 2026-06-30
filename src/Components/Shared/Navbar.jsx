@@ -76,7 +76,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-primary-light/50 dark:bg-primary-dark/50 dark:shadow-primary-light/50 sticky top-0 z-50 shadow-lg backdrop-blur-xs">
+    <div className="bg-primary-light/50 dark:bg-primary-dark/50 sticky top-0 z-50 shadow-lg backdrop-blur-xs">
       <div className="navbar mx-auto max-w-screen-2xl">
         <div className="navbar-start">
           <div className="dropdown">

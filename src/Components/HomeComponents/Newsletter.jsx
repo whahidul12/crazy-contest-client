@@ -32,7 +32,9 @@ const Newsletter = () => {
     // Simulate API call
     setTimeout(() => {
       setStatus("success");
-      setMsg("Welcome to the community! Check your inbox for exclusive content.");
+      setMsg(
+        "Welcome to the community! Check your inbox for exclusive content.",
+      );
       setEmail("");
     }, 1500);
   };
@@ -44,11 +46,11 @@ const Newsletter = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-20">
+    <section id="newsletter" className="relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 h-40 w-40 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 h-32 w-32 rounded-full bg-gradient-to-r from-pink-500/20 to-red-500/20 blur-3xl"></div>
+        <div className="absolute right-10 bottom-10 h-32 w-32 rounded-full bg-gradient-to-r from-pink-500/20 to-red-500/20 blur-3xl"></div>
         <div className="absolute top-1/2 left-1/3 h-28 w-28 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 blur-3xl"></div>
       </div>
 
@@ -58,10 +60,10 @@ const Newsletter = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-1 shadow-2xl"
+          className="bg-secondary-o/30 relative overflow-hidden rounded-3xl p-1 shadow-2xl"
         >
           {/* Inner Container */}
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 px-8 py-16 sm:px-12 lg:px-20">
+          <div className="relative overflow-hidden rounded-3xl px-8 py-16 sm:px-12 lg:px-20">
             {/* Animated Background Elements */}
             <div className="absolute top-0 right-0 -mt-20 -mr-20 h-80 w-80 rounded-full bg-white/10 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 -mb-20 -ml-20 h-80 w-80 rounded-full bg-white/5 blur-3xl"></div>
@@ -81,21 +83,22 @@ const Newsletter = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="mb-4 inline-flex items-center rounded-full bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur-sm"
+                  className="text-primary-dark dark:text-primary-light mb-4 inline-flex items-center rounded-full bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur-sm"
                 >
                   🎉 Join 50,000+ Creators
                 </motion.div>
 
-                <h2 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
+                <h2 className="text-primary-dark dark:text-primary-light mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
                   Don't Miss the Next{" "}
-                  <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
                     Big Win
                   </span>
                 </h2>
-                
-                <p className="mb-6 text-lg text-blue-100 sm:text-xl">
-                  Get exclusive access to high-paying contests, insider tips from top winners, 
-                  and be the first to know about new opportunities.
+
+                <p className="text-primary-dark dark:text-primary-light mb-6 text-lg sm:text-xl">
+                  Get exclusive access to high-paying contests, insider tips
+                  from top winners, and be the first to know about new
+                  opportunities.
                 </p>
 
                 {/* Benefits */}
@@ -109,10 +112,12 @@ const Newsletter = () => {
                       viewport={{ once: true }}
                       className="flex items-center gap-3 text-blue-100"
                     >
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-orange-500 to-yellow-500">
                         <benefit.icon size={14} />
                       </div>
-                      <span className="font-medium">{benefit.text}</span>
+                      <span className="text-primary-dark dark:text-primary-light font-medium">
+                        {benefit.text}
+                      </span>
                     </motion.div>
                   ))}
                 </div>
@@ -151,7 +156,7 @@ const Newsletter = () => {
                       disabled={status === "success" || status === "loading"}
                       whileHover={{ scale: 1.02, y: -1 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
+                      className="group flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 px-6 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
                     >
                       {status === "loading" ? (
                         <div className="flex items-center gap-2">
@@ -187,7 +192,7 @@ const Newsletter = () => {
                     )}
                   </form>
 
-                  <p className="mt-4 text-center text-xs text-blue-200">
+                  <p className="text-primary-dark dark:text-primary-light mt-4 text-center text-xs">
                     No spam, unsubscribe at any time. We respect your privacy.
                   </p>
                 </div>
@@ -196,36 +201,36 @@ const Newsletter = () => {
 
             {/* Floating Elements */}
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, -10, 0],
-                rotate: [0, 5, 0]
+                rotate: [0, 5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
-              className="absolute top-20 right-20 hidden lg:block"
+              className="absolute top-10 right-10 hidden lg:block"
             >
-              <div className="rounded-full bg-white/20 p-3 backdrop-blur-sm">
+              <div className="bg-secondary-o rounded-full p-3 backdrop-blur-sm">
                 <FaBell className="text-2xl text-white" />
               </div>
             </motion.div>
 
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, 10, 0],
-                rotate: [0, -5, 0]
+                rotate: [0, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 1
+                delay: 1,
               }}
-              className="absolute bottom-20 left-20 hidden lg:block"
+              className="absolute bottom-10 left-10 hidden lg:block"
             >
-              <div className="rounded-full bg-white/20 p-3 backdrop-blur-sm">
+              <div className="bg-secondary-o rounded-full p-3 backdrop-blur-sm">
                 <FaGift className="text-2xl text-white" />
               </div>
             </motion.div>

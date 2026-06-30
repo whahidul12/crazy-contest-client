@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import heroImg from "../../assets/hero-img.jpg";
+import { FaTrophy } from "react-icons/fa";
 
 const Banner = () => {
   return (
@@ -29,12 +32,18 @@ const Banner = () => {
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-secondary-o rounded-lg px-8 py-4 text-lg font-bold text-white transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95">
-                Get started for free
-              </button>
-              <button className="rounded-lg bg-slate-100 px-8 py-4 text-lg font-bold text-slate-900 transition-all hover:scale-105 hover:bg-slate-200 active:scale-95 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
-                Request a demo
-              </button>
+              <Link
+                to={"/all-contests"}
+                className="bg-secondary-o rounded-lg px-8 py-4 text-lg font-bold text-white transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/20 active:scale-95"
+              >
+                Explore Contest
+              </Link>
+              <Link
+                to={"/help-center"}
+                className="rounded-lg bg-slate-100 px-8 py-4 text-lg font-bold text-slate-900 transition-all hover:scale-105 hover:bg-slate-200 active:scale-95 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+              >
+                Learn More
+              </Link>
             </div>
             <div className="space-y-4 pt-8">
               <p className="text-xs font-bold tracking-widest text-slate-400 uppercase dark:text-slate-500">
@@ -136,28 +145,46 @@ const Banner = () => {
                 className="rounded-3xl shadow-2xl transition-all duration-300 dark:shadow-slate-900"
                 src={heroImg}
               />
-              <div className="absolute -top-6 -left-6 hidden animate-bounce rounded-xl border border-slate-100 bg-white p-4 shadow-xl [animation-duration:4s] md:block dark:border-slate-700 dark:bg-slate-800">
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+                viewport={{ once: true }}
+                className="absolute -top-6 -left-6 animate-bounce rounded-2xl border border-white/20 bg-white/90 p-4 shadow-xl backdrop-blur-sm [animation-duration:4s] dark:bg-gray-800/90"
+              >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-100 text-orange-600">
-                    <span className="text-sm">✏️</span>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+                    <FaTrophy size={16} />
                   </div>
-                  <div className="space-y-1">
-                    <div className="h-2 w-16 rounded bg-slate-200 dark:bg-slate-700"></div>
-                    <div className="h-2 w-10 rounded bg-slate-100 dark:bg-slate-700"></div>
+                  <div>
+                    <div className="text-sm font-bold text-gray-900 dark:text-white">
+                      Contest Winner
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      $5,000 Prize
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="absolute -right-6 -bottom-10 hidden animate-bounce rounded-xl border border-slate-100 bg-white p-4 shadow-xl [animation-duration:3.5s] md:block dark:border-slate-700 dark:bg-slate-800">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1, type: "spring", stiffness: 200 }}
+                viewport={{ once: true }}
+                className="absolute -right-6 -bottom-6 animate-bounce rounded-2xl border border-white/20 bg-white/90 p-4 shadow-xl backdrop-blur-sm [animation-duration:3.5s] dark:bg-gray-800/90"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex items-center gap-1">
                     <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase">
-                      Project Launch
+                    <span className="text-xs font-bold text-gray-600 uppercase dark:text-gray-400">
+                      Live Contest
                     </span>
                   </div>
-                  <div className="h-3 w-32 rounded bg-slate-100 dark:bg-slate-700"></div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">
+                    234 Participants
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

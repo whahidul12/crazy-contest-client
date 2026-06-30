@@ -22,11 +22,15 @@ const ContestCard = ({ contest }) => {
 
   return (
     <motion.div
-      className="card bg-card-light dark:bg-card-dark shadow-xl transition-shadow duration-300 hover:shadow-2xl"
+      className="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Hover Glow Effect */}
+      <div
+        className={`to-green-60 absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20`}
+      ></div>
       <figure className="relative h-56">
         <img src={image} alt={name} className="h-full w-full object-cover" />
         <div className="badge badge-primary absolute top-2 right-2">{type}</div>
@@ -42,14 +46,14 @@ const ContestCard = ({ contest }) => {
           <span className="text-secondary-c font-bold">
             Fee: <span className="text-secondary">${price}</span>
           </span>
-          <span className="text-secondary-c text-sm font-medium">
+          <span className="text-secondary-c mb-5 text-sm font-medium">
             Participants: {participantsCount}
           </span>
         </div>
         <div className="card-actions mt-4 justify-end">
           <button
             onClick={handleDetailsClick}
-            className="btn bg-secondary-o btn-sm border-none"
+            className="btn bg-secondary-o btn-sm absolute bottom-5 border-none"
           >
             Details
           </button>

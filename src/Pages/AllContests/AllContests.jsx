@@ -22,7 +22,7 @@ const AllContests = () => {
   const [endActiveTab, setEndActiveTab] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [endCurrentPage, setEndCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
 
   const axiosPublic = useAxiosPublic();
   const handleSearch = (e) => {
@@ -124,13 +124,28 @@ const AllContests = () => {
       </div>
     );
   };
+
+  const tabs = document.querySelectorAll(".myTab");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        t.classList.remove("tab-active", "text-white", "[--tab-bg:#016257]");
+        t.classList.add("text-secondary-o");
+      });
+
+      tab.classList.add("tab-active", "text-white", "[--tab-bg:#016257]");
+      tab.classList.remove("text-gray-500");
+    });
+  });
+
   return (
-    <div className="tabs tabs-box bg-primary-light dark:bg-primary-dark -mt-20 pt-8">
+    <div className="tabs tabs-box bg-primary-light dark:bg-primary-dark -mt-20 pt-24">
       {/* ======================= ONGOING CONTESTS TAB ======================= */}
       <input
         type="radio"
         name="my_tabs_6"
-        className="tab text-secondary-o dark:text-primary-light border-secondary-o mt-20 w-1/2 border"
+        className="tab myTab tab-active border-secondary-o mx-auto mt-4 w-1/2 border-2 font-bold text-white [--tab-bg:#016257]"
         aria-label="Ongoing Contest"
         defaultChecked
       />
@@ -188,7 +203,7 @@ const AllContests = () => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
               {contests.length > 0 ? (
                 contests.map((contest) => (
                   <ContestCard key={contest._id} contest={contest} />
@@ -210,9 +225,10 @@ const AllContests = () => {
       <input
         type="radio"
         name="my_tabs_6"
-        className="tab text-secondary-o dark:text-primary-light border-secondary-o mt-20 w-1/2 border"
+        className="tab myTab text-secondary-o border-secondary-o mt-4 w-1/2 border-2 font-bold"
         aria-label="Ended Contest"
       />
+
       <div className="tab-content container mx-auto px-4 py-10">
         <Helmet>
           <title>Crazy Contest | All Ended Contests</title>

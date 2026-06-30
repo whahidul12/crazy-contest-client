@@ -43,20 +43,21 @@ const PopularContests = () => {
     );
 
   return (
-    <div className="my-16 px-4">
-      <h2 className="text-secondary-c dark:text-primary-light mb-10 text-center text-3xl font-bold sm:text-4xl">
+    <div className="my-10 px-4">
+      <h2 className="dark:text-primary-light mb-10 text-center text-3xl font-bold text-gray-900 sm:text-4xl">
         Popular Contests
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {contests.map((contest) => (
+        {contests.map((contest, i) => (
           <motion.div
+            key={i}
             variants={cardVariants}
             whileHover={{
               y: -8,
               scale: 1.02,
               transition: { type: "spring", stiffness: 0, damping: 20 },
             }}
-            className="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800"
+            className="group relative cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl dark:border-gray-700 dark:bg-gray-800"
           >
             {/* Hover Glow Effect */}
             <div
@@ -76,13 +77,13 @@ const PopularContests = () => {
               <p className="text-primary-dark/70 dark:text-primary-light/70">
                 {contest.description.slice(0, 80)}...
               </p>
-              <p className="text-secondary-c font-semibold">
+              <p className="text-secondary-c mb-5 font-semibold">
                 Participants: {contest.participantsCount}
               </p>
               <div className="card-actions justify-end">
                 <Link
                   to={`/contests/${contest._id}`}
-                  className="btn bg-secondary-o btn-sm border-none"
+                  className="btn bg-secondary-o btn-sm absolute bottom-5 z-10 border-none"
                 >
                   Details
                 </Link>
